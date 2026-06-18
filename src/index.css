@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --color-primary: var(--primary-color);
+  --color-primary-hover: var(--primary-hover-color);
+  --color-accent-bg: var(--accent-bg-color);
+  --color-brand-border: var(--brand-border);
+}
+
+:root {
+  --primary-color: #4f46e5;
+  --primary-hover-color: #4338ca;
+  --accent-bg-color: #f5f3ff;
+  --brand-border: #e0e7ff;
+}
+
+.dark {
+  --primary-color: #818cf8;
+  --primary-hover-color: #6366f1;
+  --accent-bg-color: rgba(30, 27, 75, 0.5);
+  --brand-border: rgba(49, 46, 129, 0.6);
+}
+
+/* Custom Lite Red-Grey theme overriding rules */
+.red-grey {
+  --primary-color: #dc2626;         /* red-600 */
+  --primary-hover-color: #b91c1c;   /* red-700 */
+  --accent-bg-color: #fef2f2;      /* red-50 */
+  --brand-border: #fee2e2;         /* red-100 */
+
+  background-color: #f4f4f5 !important;
+  color: #18181b !important;
+}
+
+/* Page, header, nodes override */
+.red-grey body, 
+.red-grey main, 
+.red-grey div.min-h-screen, 
+.red-grey section {
+  background-color: #f4f4f5 !important;
+  color: #18181b !important;
+}
+
+.red-grey .bg-white,
+.red-grey .bg-slate-50,
+.red-grey .dark\:bg-slate-950,
+.red-grey .dark\:bg-slate-900 {
+  background-color: #ffffff !important;
+}
+
+.red-grey div.bg-white,
+.red-grey div.p-6.bg-white,
+.red-grey .bg-slate-50,
+.red-grey .dark\:bg-slate-900,
+.red-grey .bg-white\/95 {
+  background-color: #ffffff !important;
+  border-color: #e4e4e7 !important;
+}
+
+/* Soft grey tags/widgets instead of indigo */
+.red-grey .bg-indigo-50,
+.red-grey .bg-indigo-50\/30,
+.red-grey .dark\:bg-indigo-950\/45,
+.red-grey .dark\:bg-indigo-950\/40,
+.red-grey .dark\:bg-indigo-950\/50 {
+  background-color: #fee2e2 !important;
+  color: #991b1b !important;
+}
+
+/* Red accents and texts */
+.red-grey .text-indigo-600,
+.red-grey .dark\:text-indigo-400,
+.red-grey .text-indigo-700,
+.red-grey .dark\:text-indigo-300,
+.red-grey .text-indigo-550,
+.red-grey .text-cyan-555,
+.red-grey .text-cyan-600,
+.red-grey .dark\:text-cyan-400 {
+  color: #dc2626 !important;
+}
+
+.red-grey .bg-indigo-600,
+.red-grey .dark\:bg-indigo-500,
+.red-grey .bg-indigo-550 {
+  background-color: #dc2626 !important;
+  color: #ffffff !important;
+}
+
+.red-grey .bg-indigo-600:hover,
+.red-grey .dark\:bg-indigo-500:hover {
+  background-color: #be123c !important;
+}
+
+.red-grey .border-indigo-100,
+.red-grey .dark\:border-indigo-900\/50,
+.red-grey .dark\:border-indigo-900\/60,
+.red-grey .border-slate-150,
+.red-grey .dark\:border-slate-800 {
+  border-color: #e4e4e7 !important;
+}
+
+.red-grey .shadow-sm,
+.red-grey .shadow-md {
+  box-shadow: 0 1px 3px rgba(220, 38, 38, 0.05), 0 1px 2px rgba(220, 38, 38, 0.02) !important;
+}
+
+/* Custom styles for clean, smooth scrolls */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 9999px;
+  background: var(--color-slate-400);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: var(--color-slate-800);
+}
+
+/* Markdown styling in blogs */
+.markdown-body {
+  color: inherit;
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.markdown-body h1 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  letter-spacing: -0.025em;
+  color: inherit;
+}
+
+.markdown-body h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 1.25rem;
+  margin-bottom: 0.75rem;
+  color: inherit;
+}
+
+.markdown-body p {
+  margin-bottom: 1rem;
+}
+
+.markdown-body pre {
+  background-color: rgb(15 23 42);
+  color: rgb(241 245 249);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  margin-bottom: 1.25rem;
+}
+
+.dark .markdown-body pre {
+  background-color: rgb(9 15 29);
+}
+
+.markdown-body code {
+  font-family: var(--font-mono);
+  background-color: rgba(148, 163, 184, 0.1);
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+}
+
+.markdown-body ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.markdown-body ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
