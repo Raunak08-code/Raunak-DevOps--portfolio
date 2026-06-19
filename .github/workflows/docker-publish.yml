@@ -26,4 +26,6 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
-          tags: raunak08/raunak-devops-portfolio:latest
+          tags: |
+                raunak08/raunak-devops-portfolio:latest
+                raunak08/raunak-devops-portfolio:${{ github.sha }}
