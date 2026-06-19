@@ -18,13 +18,13 @@ export const resumeData: ResumeData = {
     },
     {
       degree: "Intermediate",
-      institution: "Saraswati senior secondary Vidya Mandir",
+      institution: "Saraswati senior secondary Vidya Mandir, Deoria khas, Deoria, UP",
       score: "81.4%",
       year: "2022"
     },
     {
       degree: "High School",
-      institution: "Saraswati senior secondary Vidya Mandir",
+      institution: "Saraswati senior secondary Vidya Mandir, Deoria khas, Deoria, UP",
       score: "84.8%",
       year: "2020"
     }
