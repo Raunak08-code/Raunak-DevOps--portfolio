@@ -141,7 +141,7 @@ export default function FloatingDownload({ theme }: FloatingDownloadProps) {
           doc.setFont("helvetica", "normal");
           doc.setFontSize(8);
           doc.setTextColor(textColor[0], textColor[1], textColor[2]);
-          doc.text("Sem 1: 7.14  |  Sem 2: 7.45  |  Sem 3: 7.76  |  Sem 4: 7.09  |  Sem 5: 7.17  |  Sem 6: Ongoing  |  Sem 7-8: Upcoming", margin + 4, y);
+          doc.text("Sem 1: 7.14  |  Sem 2: 7.45  |  Sem 3: 7.76  |  Sem 4: 7.09  |  Sem 5: 7.17  |  Sem 6: 7.0  |  Sem 7: Ongoing  | Sem 8: Upcoming", margin + 4, y);
           y += 6;
         }
       });
