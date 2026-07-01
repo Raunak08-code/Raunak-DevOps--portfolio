@@ -286,5 +286,56 @@ We are designing DevEx-IDP as a fast, clean portal that coordinates third-party 
 - **Git Orchestration**: Instantly provisions a repository using custom GitHub API wrappers.
 - **Project Tracking Integration**: Triggers automated Jira workspace creation with standardized Kanban boards.
 - **Environment Spin-up**: Provides instant local config downloads to get developers from zero to code in 60 seconds.`
-}
+  },
+  {
+    id: "auto-scroll-debugging-fix",
+    title: "Fixing Auto-scroll Issue After Long Debugging",
+    excerpt: "Why my portfolio kept opening near the Education section and how I fixed it by preventing an unwanted initial scroll after load.",
+    date: "July 2, 2026",
+    readTime: "6 min read",
+    tags: ["React", "Debugging", "Scroll", "Frontend"],
+    content: `# Fixing Auto-scroll Issue After Long Debugging
+
+My portfolio was always opening near the Education section instead of the Hero section. At first, this looked like a browser scroll restoration problem, but the behavior was too consistent to be accidental.
+
+---
+
+## 1. What I Checked First
+I ruled out the usual suspects:
+- Browser scroll restoration
+- Component ordering in the page tree
+- Whether the Hero element actually existed in the DOM
+
+The page structure itself was fine, so the issue had to be happening during runtime.
+
+## 2. How I Found the Root Cause
+I used \`window.scrollY\` to verify that the page was being scrolled programmatically after load. That pointed me toward a scroll-related effect in the app.
+
+After tracing the flow, I found a \`scrollIntoView()\` call inside the terminal component. It was firing after the initial history setup, which pushed the viewport away from the top and made the Education section appear first.
+
+## 3. The Fix
+I solved it by skipping the first effect execution with a \`useRef\`. That preserved the normal auto-scroll behavior for later terminal interactions while preventing the unwanted jump on initial load.
+
+### Example approach
+\`\`\`ts
+const hasInitialized = useRef(false);
+
+useEffect(() => {
+  if (!hasInitialized.current) {
+    hasInitialized.current = true;
+    return;
+  }
+
+  // run the desired auto-scroll logic here
+}, [dependency]);
+\`\`\`
+
+## 4. Why This Worked
+The change was small but important:
+- The page now opens at the Hero section as intended.
+- Later interactions still keep their auto-scroll behavior.
+- The fix stays localized and avoids changing the overall user flow.
+
+This kind of issue is easy to miss because it only appears after the app has fully mounted. In debugging, the key is to verify the browser state, inspect the lifecycle sequence, and isolate the first render behavior before changing anything else.`
+  }
 ];

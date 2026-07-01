@@ -32,11 +32,16 @@ export default function Terminal() {
       }
     ]);
   }, []);
-
+  const isFirstRender = useRef(true);
   useEffect(() => {
-    if (consoleEndRef.current) {
-      consoleEndRef.current.scrollIntoView({ behavior: "smooth" });
-    }
+    if (isFirstRender.current) {
+    isFirstRender.current = false;
+    return;
+  }
+
+  consoleEndRef.current?.scrollIntoView({
+    behavior: "smooth",
+  });
   }, [history]);
 
   const focusInput = () => {
