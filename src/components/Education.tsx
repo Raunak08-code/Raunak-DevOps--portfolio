@@ -121,6 +121,19 @@ export default function Education() {
   const [isConsoleOpen, setIsConsoleOpen] = useState(false);
   const [selectedSemIdx, setSelectedSemIdx] = useState<number>(4); // Default select Semester 5
 
+  const trendData = aktuSyllabus.filter((item) => item.status === "Completed");
+  const sgpaValues = trendData.map((item) => Number(item.sgpa));
+  const minSgpa = Math.min(...sgpaValues);
+  const maxSgpa = Math.max(...sgpaValues);
+  const chartPoints = trendData.map((item, index) => {
+    const value = Number(item.sgpa);
+    const x = 10 + index * 70;
+    const y = 52 - ((value - minSgpa) / (maxSgpa - minSgpa || 1)) * 40;
+    return { x, y, label: item.sem, value };
+  });
+  const linePath = chartPoints.map((point, index) => `${index === 0 ? "M" : "L"} ${point.x} ${point.y}`).join(" ");
+  const areaPath = `${linePath} L ${chartPoints[chartPoints.length - 1].x} 60 L ${chartPoints[0].x} 60 Z`;
+
   return (
     <section
       id="education"
@@ -205,7 +218,7 @@ export default function Education() {
                           {/* Mini Sparkline SGPA Graph */}
                           <div className="bg-slate-50 dark:bg-slate-950/65 p-3 rounded-lg border border-slate-200/40 dark:border-slate-900">
                             <span className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-widest block mb-1">
-                              SGPA Trend line (Sem 1-5 Progress)
+                              SGPA Trend line (Sem 1-6 Progress)
                             </span>
                             <div className="h-28 w-full flex items-end justify-between px-3 pt-2">
                               {/* Draw SVG Line Chart natively to operate flawlessly cross-platform */}
@@ -217,31 +230,31 @@ export default function Education() {
                                   </linearGradient>
                                 </defs>
                                 <path
-                                  d="M 10 52 L 95 38 L 180 22 L 265 54 L 350 50"
+                                  d={linePath}
                                   fill="none"
                                   stroke="#6366f1"
                                   strokeWidth="2.5"
                                   strokeLinecap="round"
                                 />
-                                <path
-                                  d="M 10 52 L 95 38 L 180 22 L 265 54 L 350 50 L 350 60 L 10 60 Z"
-                                  fill="url(#chartGradient)"
-                                />
+                                <path d={areaPath} fill="url(#chartGradient)" />
                                 {/* Render data points */}
-                                <circle cx="10" cy="52" r="4.5" fill="#6366f1" className="cursor-pointer transition-all hover:scale-125" onClick={() => setSelectedSemIdx(0)}/>
-                                <circle cx="95" cy="38" r="4.5" fill="#6366f1" className="cursor-pointer transition-all hover:scale-125" onClick={() => setSelectedSemIdx(1)}/>
-                                <circle cx="180" cy="22" r="4.5" fill="#6366f1" className="cursor-pointer transition-all hover:scale-125" onClick={() => setSelectedSemIdx(2)}/>
-                                <circle cx="265" cy="54" r="4.5" fill="#6366f1" className="cursor-pointer transition-all hover:scale-125" onClick={() => setSelectedSemIdx(3)}/>
-                                <circle cx="350" cy="50" r="4.5" fill="#6366f1" className="cursor-pointer transition-all hover:scale-125" onClick={() => setSelectedSemIdx(4)}/>
+                                {chartPoints.map((point, pointIdx) => (
+                                  <circle
+                                    key={pointIdx}
+                                    cx={point.x}
+                                    cy={point.y}
+                                    r="4.5"
+                                    fill="#6366f1"
+                                    className="cursor-pointer transition-all hover:scale-125"
+                                    onClick={() => setSelectedSemIdx(pointIdx)}
+                                  />
+                                ))}
                               </svg>
                             </div>
                             <div className="flex justify-between text-[10px] font-mono text-slate-500 font-bold px-2 mt-1.5 border-t border-slate-150/40 dark:border-slate-850 pt-1">
-                              <span>Sem 1 (7.14)</span>
-                              <span>Sem 2 (7.45)</span>
-                              <span>Sem 3 (7.76)</span>
-                              <span>Sem 4 (7.09)</span>
-                              <span>Sem 5 (7.17)</span>
-                              <span>Sem 6 (7.00)</span>
+                              {chartPoints.map((point, pointIdx) => (
+                                <span key={pointIdx}>Sem {pointIdx + 1} ({point.value.toFixed(2)})</span>
+                              ))}
                             </div>
                           </div>
 
