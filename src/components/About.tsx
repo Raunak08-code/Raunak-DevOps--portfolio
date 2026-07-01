@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "motion/react";
+import { motion, type Variants } from "motion/react";
 import { User, BookOpen, Target, CheckCircle2, Terminal as TermIcon, Award, Layers } from "lucide-react";
 
 export default function About() {
@@ -15,9 +15,9 @@ export default function About() {
     { name: "Automation with Python & Go", level: 80 }
   ];
 
-  const fadeUpVariants = {
+  const fadeUpVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } }
   };
 
   return (

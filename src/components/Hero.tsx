@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "motion/react";
+import { motion, type Variants } from "motion/react";
 import { Github, Linkedin, Mail, ArrowRight, Server, Terminal as TermIcon, FileText, Sparkles, Instagram } from "lucide-react";
 import { resumeData } from "../data";
 
@@ -8,7 +8,7 @@ interface HeroProps {
 }
 
 export default function Hero({ onDownloadResume }: HeroProps) {
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -19,7 +19,7 @@ export default function Hero({ onDownloadResume }: HeroProps) {
     }
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 25 },
     visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100 } }
   };
@@ -52,7 +52,7 @@ export default function Hero({ onDownloadResume }: HeroProps) {
             <motion.div variants={itemVariants} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-100 dark:border-indigo-900/50">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
               <span className="text-xs font-mono font-medium text-indigo-700 dark:text-indigo-300">
-                Active in Greater Noida • B.Tech CS-AI
+                Active in Noida • B.Tech CS-AI
               </span>
             </motion.div>
 
@@ -68,7 +68,7 @@ export default function Hero({ onDownloadResume }: HeroProps) {
                 variants={itemVariants}
                 className="font-sans font-bold text-xl sm:text-2xl md:text-3xl bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 via-indigo-500 to-cyan-500 dark:from-indigo-400 dark:via-indigo-300 dark:to-cyan-400"
               >
-                Aspiring DevOps Engineer
+                DevOps Engineer | Cloud & Platform Engineering Enthusiast 
               </motion.h2>
             </div>
 

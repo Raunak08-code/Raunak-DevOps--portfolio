@@ -13,7 +13,7 @@ export const resumeData: ResumeData = {
     {
       degree: "B.Tech CS-AI",
       institution: "GL Bajaj Institute of Technology and Management",
-      score: "CGPA: 7.32",
+      score: "CGPA: 7.23",
       year: "2023 - 2027"
     },
     {

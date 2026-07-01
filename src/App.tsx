@@ -162,12 +162,10 @@ export default function App() {
           </div>
 
           <p className="text-xs font-mono font-medium tracking-wide">
-            Designed for Raunak Pandey | Copyright © {new Date().getFullYear()} • Aspiring DevOps Engineer
+            Designed for Raunak Pandey | Copyright © {new Date().getFullYear()} • DevOps Engineer | Cloud & Platform Engineering Enthusiast
           </p>
 
-          <p className="text-[10px] text-slate-600 max-w-sm mx-auto leading-relaxed">
-            Compiled seamlessly. This website uses local state arrays, CSS modules, and custom micro-parsers.
-          </p>
+          
         </div>
       </footer>
 

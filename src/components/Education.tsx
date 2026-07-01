@@ -78,8 +78,8 @@ const aktuSyllabus = [
   },
   {
     sem: "Semester 6",
-    sgpa: "Currently Ongoing",
-    status: "Ongoing" as const,
+    sgpa: "7.00",
+    status: "Completed" as const,
     credits: "22.0",
     subjects: [
       "Deep Learning Techniques (BCS-AI-601)",
@@ -92,8 +92,8 @@ const aktuSyllabus = [
   },
   {
     sem: "Semester 7",
-    sgpa: "Upcoming",
-    status: "Upcoming" as const,
+    sgpa: "Ongoing",
+    status: "Ongoing" as const,
     credits: "18.0",
     subjects: [
       "Cloud Computing (BCS-713) / Cloud Orchestration",
@@ -241,6 +241,7 @@ export default function Education() {
                               <span>Sem 3 (7.76)</span>
                               <span>Sem 4 (7.09)</span>
                               <span>Sem 5 (7.17)</span>
+                              <span>Sem 6 (7.00)</span>
                             </div>
                           </div>
 
