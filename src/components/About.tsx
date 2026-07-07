@@ -157,19 +157,19 @@ export default function About() {
 
               <div className="grid grid-cols-2 gap-4">
                 <div className="p-3.5 bg-white dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800 rounded-2xl text-center">
-                  <span className="text-2xl font-bold font-mono text-indigo-600 dark:text-indigo-400 block">7.32</span>
+                  <span className="text-2xl font-bold font-mono text-indigo-600 dark:text-indigo-400 block">7.23</span>
                   <span className="text-[9px] uppercase font-mono tracking-wider text-slate-450 block mt-1">B.Tech CGPA</span>
                 </div>
                 <div className="p-3.5 bg-white dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800 rounded-2xl text-center">
-                  <span className="text-2xl font-bold font-mono text-emerald-600 dark:text-emerald-400 block">100+</span>
+                  <span className="text-2xl font-bold font-mono text-emerald-600 dark:text-emerald-400 block">150+</span>
                   <span className="text-[9px] uppercase font-mono tracking-wider text-slate-450 block mt-1">DSA Queries</span>
                 </div>
                 <div className="p-3.5 bg-white dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800 rounded-2xl text-center">
-                  <span className="text-2xl font-bold font-mono text-cyan-600 dark:text-cyan-400 block">100%</span>
+                  <span className="text-2xl font-bold font-mono text-cyan-600 dark:text-cyan-400 block">98%</span>
                   <span className="text-[9px] uppercase font-mono tracking-wider text-slate-450 block mt-1">Commit Rate</span>
                 </div>
                 <div className="p-3.5 bg-white dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800 rounded-2xl text-center">
-                  <span className="text-2xl font-bold font-mono text-pink-600 dark:text-pink-400 block">2</span>
+                  <span className="text-2xl font-bold font-mono text-pink-600 dark:text-pink-400 block">3</span>
                   <span className="text-[9px] uppercase font-mono tracking-wider text-slate-450 block mt-1">Active Labs</span>
                 </div>
               </div>
