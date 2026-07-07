@@ -107,17 +107,47 @@ async def process_incoming_email(email: IncomingEmail, tasks: BackgroundTasks):
                     </div>
                   </div>
                   
-                  {/* GitHub Repo icon external */}
-                  <a
-                    id={`project-github-link-${proj.id}`}
-                    href={proj.github}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="p-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:scale-105 transition-all cursor-pointer shadow-sm"
-                    title="View Source on GitHub"
-                  >
-                    <Github className="h-4 w-4" />
-                  </a>
+                  {/* Project external links: GitHub, Live, Docker Hub (when available) */}
+                  <div className="flex items-center gap-2">
+                    {proj.github && (
+                      <a
+                        id={`project-github-link-${proj.id}`}
+                        href={proj.github}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="p-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:scale-105 transition-all cursor-pointer shadow-sm"
+                        title="View Source on GitHub"
+                      >
+                        <Github className="h-4 w-4" />
+                      </a>
+                    )}
+
+                    {proj.live && (
+                      <a
+                        id={`project-live-link-${proj.id}`}
+                        href={proj.live}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="p-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:scale-105 transition-all cursor-pointer shadow-sm"
+                        title="View Live Site"
+                      >
+                        <ExternalLink className="h-4 w-4" />
+                      </a>
+                    )}
+
+                    {proj.docker && (
+                      <a
+                        id={`project-docker-link-${proj.id}`}
+                        href={proj.docker}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="p-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:scale-105 transition-all cursor-pointer shadow-sm"
+                        title="View on Docker Hub"
+                      >
+                        <FolderGit2 className="h-4 w-4" />
+                      </a>
+                    )}
+                  </div>
                 </div>
 
                 <h3 className="font-sans font-extrabold text-xl sm:text-2xl text-slate-900 dark:text-slate-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
