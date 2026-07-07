@@ -10,6 +10,8 @@ export interface ProjectItem {
   title: string;
   subtitle: string;
   github: string;
+  live?: string;
+  docker?: string;
   description: string[];
   tags: string[];
 }
@@ -37,6 +39,7 @@ export interface ResumeData {
   email: string;
   linkedin: string;
   github: string;
+  dockerHub?: string;
   instagram?: string;
   education: EducationItem[];
   skills: SkillGroup[];

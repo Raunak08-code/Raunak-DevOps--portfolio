@@ -87,15 +87,15 @@ export default function Hero({ onDownloadResume }: HeroProps) {
               className="grid grid-cols-3 gap-4 max-w-md pt-2"
             >
               <div className="p-3 bg-white dark:bg-slate-900 rounded-xl border border-slate-150 dark:border-slate-800 shadow-sm">
-                <span className="text-xl font-bold font-mono text-indigo-600 dark:text-indigo-400 block">100+</span>
+                <span className="text-xl font-bold font-mono text-indigo-600 dark:text-indigo-400 block">150+</span>
                 <span className="text-[10px] uppercase font-mono tracking-wider text-slate-500">DSA Solved</span>
               </div>
               <div className="p-3 bg-white dark:bg-slate-900 rounded-xl border border-slate-150 dark:border-slate-800 shadow-sm">
-                <span className="text-xl font-bold font-mono text-cyan-600 dark:text-cyan-400 block">2</span>
+                <span className="text-xl font-bold font-mono text-cyan-600 dark:text-cyan-400 block">3</span>
                 <span className="text-[10px] uppercase font-mono tracking-wider text-slate-500">DevOps Apps</span>
               </div>
               <div className="p-3 bg-white dark:bg-slate-900 rounded-xl border border-slate-150 dark:border-slate-800 shadow-sm">
-                <span className="text-xl font-bold font-mono text-emerald-600 dark:text-emerald-400 block">7.32</span>
+                <span className="text-xl font-bold font-mono text-emerald-600 dark:text-emerald-400 block">7.23</span>
                 <span className="text-[10px] uppercase font-mono tracking-wider text-slate-500">B.Tech CGPA</span>
               </div>
             </motion.div>
@@ -201,7 +201,7 @@ export default function Hero({ onDownloadResume }: HeroProps) {
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 block"></span>
                     <span className="font-mono font-bold text-slate-700 dark:text-slate-300">leetcode-dsa-runner</span>
                   </div>
-                  <span className="font-mono text-[10px] text-emerald-600 dark:text-emerald-400">100+ CODES PASS</span>
+                  <span className="font-mono text-[10px] text-emerald-600 dark:text-emerald-400">150+ CODES PASS</span>
                 </div>
               </div>
 

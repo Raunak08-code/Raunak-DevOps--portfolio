@@ -6,8 +6,9 @@ export const resumeData: ResumeData = {
   location: "Greater Noida, India",
   phone: "+91 8303609789",
   email: "panditraunak.143@gmail.com",
-  linkedin: "https://linkedin.com/in/raunak-pandey", // Standard clean profile link
-  github: "https://github.com/Raunak-Pandey", // GitHub username from resume
+  linkedin: "https://www.linkedin.com/in/raunak-pandey-1801202a0/",
+  github: "https://github.com/Raunak08-code",
+  dockerHub: "https://hub.docker.com/repositories/raunak08",
   instagram: "https://www.instagram.com/raukey_/",
   education: [
     {
@@ -94,10 +95,26 @@ export const resumeData: ResumeData = {
       ],
       tags: ["Docker", "Docker-compose", "Prometheus", "Grafana", "Linux", "Python", "System Logs", "CI/CD Setup", "AWS (EC2/ECR/S3)"]
     }
+    ,
+    {
+      id: "my-portfolio",
+      title: "MY portfolio",
+      subtitle: "DevOps Portfolio Website • Raunak.DevOps",
+      github: "https://github.com/Raunak08-code/Raunak-DevOps--portfolio",
+      live: "https://raunak-dev-ops-portfolio.vercel.app/",
+      docker: "https://hub.docker.com/repository/docker/raunak-devops--potfolio",
+      description: [
+        "Took an existing web application and transformed it into a production-ready deployment.",
+        "Containerized the application using Docker and published images to Docker Hub.",
+        "Built CI/CD pipeline using GitHub Actions for automated image builds.",
+        "Deployed on AWS EC2 behind an Nginx reverse proxy."
+      ],
+      tags: ["Docker", "Docker Hub", "GitHub Actions", "CI/CD", "AWS EC2", "Nginx", "Vite", "React"]
+    }
   ],
   problemSolvingDetails: {
     description: [
-      "Solved 100+ complex DSA problems on Leetcode utilizing C++ with focus on runtime and memory space complexity optimization.",
+      "Solved 150+ complex DSA problems on Leetcode utilizing C++ with focus on runtime and memory space complexity optimization.",
       "Thorough understanding of low-level memory layouts, pointers, custom containers, and standard template library (STL)."
     ],
     leetcodeMockSolved: 112,
