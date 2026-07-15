@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Terminal from "./components/Terminal";
@@ -36,6 +36,16 @@ export default function App() {
   useEffect(() => {
     const root = document.documentElement;
     root.classList.remove("dark", "red-grey");
+  }, []);
+
+  useLayoutEffect(() => {
+    const previousScrollRestoration = window.history.scrollRestoration;
+    window.history.scrollRestoration = "manual";
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+
+    return () => {
+      window.history.scrollRestoration = previousScrollRestoration;
+    };
   }, []);
 
   const handleDownloadResume = () => {

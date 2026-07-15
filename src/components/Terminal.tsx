@@ -9,39 +9,35 @@ interface CommandHistory {
 
 export default function Terminal() {
   const [input, setInput] = useState("");
-  const [history, setHistory] = useState<CommandHistory[]>([]);
-  const consoleEndRef = useRef<HTMLDivElement>(null);
+  const [history, setHistory] = useState<CommandHistory[]>([
+    {
+      cmd: "system_init",
+      output: (
+        <div className="space-y-1.5 text-slate-300">
+          <p className="text-indigo-400 font-bold">raunak_pandey_devops_node_1.sh v1.0.4 initialized...</p>
+          <p className="text-slate-400 text-xs">
+            Welcome to Raunak's interactive terminal resume! Powered by static compilations.
+          </p>
+          <p className="text-xs text-slate-500">
+            Type <span className="text-cyan-400 font-bold font-mono">help</span> in the input prompt or click a chip below to view details.
+          </p>
+        </div>
+      )
+    }
+  ]);
+  const consoleBodyRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-
-  // Initialize terminal message
-  useEffect(() => {
-    setHistory([
-      {
-        cmd: "system_init",
-        output: (
-          <div className="space-y-1.5 text-slate-300">
-            <p className="text-indigo-400 font-bold">raunak_pandey_devops_node_1.sh v1.0.4 initialized...</p>
-            <p className="text-slate-400 text-xs">
-              Welcome to Raunak's interactive terminal resume! Powered by static compilations.
-            </p>
-            <p className="text-xs text-slate-500">
-              Type <span className="text-cyan-400 font-bold font-mono">help</span> in the input prompt or click a chip below to view details.
-            </p>
-          </div>
-        )
-      }
-    ]);
-  }, []);
   const isFirstRender = useRef(true);
+
   useEffect(() => {
     if (isFirstRender.current) {
-    isFirstRender.current = false;
-    return;
-  }
+      isFirstRender.current = false;
+      return;
+    }
 
-  consoleEndRef.current?.scrollIntoView({
-    behavior: "smooth",
-  });
+    if (consoleBodyRef.current) {
+      consoleBodyRef.current.scrollTop = consoleBodyRef.current.scrollHeight;
+    }
   }, [history]);
 
   const focusInput = () => {
@@ -239,7 +235,7 @@ export default function Terminal() {
       </div>
 
       {/* Commands Stream History */}
-      <div className="flex-1 overflow-y-auto mb-3 space-y-3 pr-1">
+      <div ref={consoleBodyRef} className="flex-1 overflow-y-auto mb-3 space-y-3 pr-1">
         {history.map((item, idx) => (
           <div key={idx} id={`cmd-out-${idx}`} className="space-y-1">
             {item.cmd !== "system_init" && (
@@ -253,7 +249,6 @@ export default function Terminal() {
             </div>
           </div>
         ))}
-        <div ref={consoleEndRef} />
       </div>
 
       {/* Terminal Command Chips Selection bar */}
