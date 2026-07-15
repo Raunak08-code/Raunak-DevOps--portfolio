@@ -4,6 +4,7 @@
  */
 
 import React, { useState, useEffect, useLayoutEffect } from "react";
+import { Analytics } from "@vercel/analytics/react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Terminal from "./components/Terminal";
@@ -181,6 +182,7 @@ export default function App() {
 
       {/* Floating Download Action Hub */}
       <FloatingDownload theme={theme} />
+      <Analytics />
 
     </div>
   );
