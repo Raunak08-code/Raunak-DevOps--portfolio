@@ -10,6 +10,7 @@ import Hero from "./components/Hero";
 import Terminal from "./components/Terminal";
 import Education from "./components/Education";
 import Skills from "./components/Skills";
+import Learning from "./components/Learning";
 import Projects from "./components/Projects";
 import Blogs from "./components/Blogs";
 import Contact from "./components/Contact";
@@ -96,7 +97,10 @@ export default function App() {
       {/* 5. Filterable Skills Arsenal */}
       <Skills />
 
-      {/* 6. Systems projects with DSA algorithmic sandbox */}
+      {/* 6. Active Learning & Roadmap */}
+      <Learning />
+
+      {/* 7. Systems projects with DSA algorithmic sandbox */}
       <Projects />
 
       {/* 7. DevOps dispatch blog posts */}

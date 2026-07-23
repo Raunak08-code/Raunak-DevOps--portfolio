@@ -14,7 +14,7 @@ export const resumeData: ResumeData = {
     {
       degree: "B.Tech CS-AI",
       institution: "GL Bajaj Institute of Technology and Management",
-      score: "CGPA: 7.23",
+      score: "CGPA: 7.61",
       year: "2023 - 2027"
     },
     {
@@ -132,6 +132,48 @@ export const resumeData: ResumeData = {
 };
 
 export const blogPosts: BlogPost[] = [
+  {
+    id: "microsoft-learn-devops-journey",
+    title: "My DevOps Learning Journey with Microsoft Learn",
+    excerpt: "How Microsoft Learn helped me build a strong foundation in DevOps through practical, hands-on learning and guided modules.",
+    date: "July 23, 2026",
+    readTime: "5 min read",
+    tags: ["Microsoft Learn", "DevOps", "Learning", "Cloud"],
+    content: `# My DevOps Learning Journey with Microsoft Learn
+
+My learning journey pushed me closer to the world of DevOps, and one of the biggest guides along the way was **Microsoft Learn**. It became more than just a learning platform for me — it helped me build a strong foundation, think in a more practical way, and understand how real-world systems actually work.
+> I'm currently at level 4 of it.
+---
+
+## 1. Why Microsoft Learn Stood Out
+What I appreciated most about Microsoft Learn was its structured approach. Instead of just reading theory, it guided me through concepts in a way that felt practical and beginner-friendly. It helped me connect the dots between tools, workflows, and the mindset needed to grow as a DevOps engineer.
+
+## 2. What I Learned Along the Way
+While exploring the platform, I learned many important aspects of becoming a strong DevOps engineer, including:
+- **Version control** and the importance of collaboration
+- **Docker basics** and containerization fundamentals
+- **Container optimization** and efficient workflows
+- **How DevOps practices support development and deployment**
+- **The importance of understanding systems deeply rather than just memorizing commands**
+
+These topics gave me a better grasp of how modern software delivery works and how DevOps brings development and operations closer together.
+
+## 3. The Modules That Helped Me Most
+Some of the learning paths that really shaped my understanding were:
+- **Develop with DevOps**
+- **Deploy with DevOps**
+- **Deliver with DevOps**
+
+These modules helped me see DevOps not just as a set of tools, but as a way of thinking — one that focuses on automation, collaboration, reliability, and continuous improvement.
+
+## 4. My Experience and Takeaway
+What made Microsoft Learn especially valuable for me was the combination of clear explanations and hands-on learning. It didn’t just teach me concepts; it helped me build confidence in applying them. That practical approach made a big difference in my journey and pushed me to explore DevOps more seriously.
+
+## 5. Recommendation
+If you are starting your journey in DevOps or want to strengthen your fundamentals, I highly recommend **Microsoft Learn**. It is a great platform for building a solid base, learning step by step, and developing the mindset needed to grow as a modern engineer.
+
+For anyone looking for a practical and beginner-friendly path into DevOps, Microsoft Learn is definitely worth exploring.`
+  },
   {
     id: "prometheus-grafana-challenges",
     title: "Overcoming Connection Hurdles in Prometheus & Grafana Integration",

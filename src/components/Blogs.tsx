@@ -7,6 +7,12 @@ import { BlogPost } from "../types";
 export default function Blogs() {
   const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
 
+  const sortedBlogPosts = [...blogPosts].sort((a, b) => {
+    const dateA = new Date(a.date).getTime();
+    const dateB = new Date(b.date).getTime();
+    return dateB - dateA;
+  });
+
   // Custom micro-parser to convert standard markdown into beautiful stylized React DOM tree
   const renderMarkdown = (text: string) => {
     const lines = text.split("\n");
@@ -127,7 +133,7 @@ export default function Blogs() {
 
         {/* Blogs cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {blogPosts.map((post) => (
+          {sortedBlogPosts.map((post) => (
             <motion.div
               key={post.id}
               id={`blog-card-${post.id}`}

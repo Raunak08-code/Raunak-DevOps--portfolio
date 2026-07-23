@@ -95,7 +95,7 @@ export default function Hero({ onDownloadResume }: HeroProps) {
                 <span className="text-[10px] uppercase font-mono tracking-wider text-slate-500">DevOps Apps</span>
               </div>
               <div className="p-3 bg-white dark:bg-slate-900 rounded-xl border border-slate-150 dark:border-slate-800 shadow-sm">
-                <span className="text-xl font-bold font-mono text-emerald-600 dark:text-emerald-400 block">7.23</span>
+                <span className="text-xl font-bold font-mono text-emerald-600 dark:text-emerald-400 block">7.61</span>
                 <span className="text-[10px] uppercase font-mono tracking-wider text-slate-500">B.Tech CGPA</span>
               </div>
             </motion.div>
