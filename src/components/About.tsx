@@ -1,6 +1,6 @@
 import React from "react";
 import { motion, type Variants } from "motion/react";
-import { User, BookOpen, Target, CheckCircle2, Terminal as TermIcon, Award, Layers } from "lucide-react";
+import { User, BookOpen, CheckCircle2, Layers } from "lucide-react";
 
 export default function About() {
   const learningFocus = [
@@ -77,26 +77,6 @@ export default function About() {
                 Another project, <span className="font-semibold text-slate-900 dark:text-white">CORVINA</span>, is an AI-powered email responder that automates email processing and reply generation using Python and FastAPI. Building this project helped me understand backend services, API design, automation workflows, and system integration.
               </p>
             </motion.div>
-
-            {/* Target Core Goal Box */}
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              variants={fadeUpVariants}
-              className="p-5 rounded-2xl bg-gradient-to-br from-indigo-50 to-indigo-100/50 dark:from-indigo-950/25 dark:to-indigo-950/5 border border-indigo-150/40 dark:border-indigo-900/40 relative overflow-hidden"
-            >
-              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-indigo-500/10 to-transparent rounded-bl-full pointer-events-none" />
-              <div className="flex gap-4 items-start">
-                <Target className="h-6 w-6 text-indigo-600 dark:text-indigo-400 flex-shrink-0 mt-0.5" />
-                <div>
-                  <h4 className="font-mono text-xs font-bold text-indigo-700 dark:text-indigo-300 uppercase tracking-widest mb-1.5">Long-Term Objective</h4>
-                  <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-sans">
-                    My long-term goal is to become a skilled <span className="font-semibold text-slate-900 dark:text-white">DevOps / Platform Engineer</span>, contributing to reliable, scalable, and automated cloud-native systems while building products that create meaningful impact.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
           </div>
 
           {/* Learning Focus Column */}
@@ -132,7 +112,7 @@ export default function About() {
                         whileInView={{ width: `${item.level}%` }}
                         viewport={{ once: true }}
                         transition={{ duration: 1, ease: "easeOut", delay: idx * 0.05 }}
-                        className="bg-indigo-500 dark:bg-indigo-400 h-1 rounded-full" 
+                        className="bg-[var(--dusty-teal)] h-1 rounded-full" 
                       />
                     </div>
                   </div>
@@ -155,22 +135,22 @@ export default function About() {
                 </h3>
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
-                <div className="p-3.5 bg-white dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800 rounded-2xl text-center">
-                  <span className="text-2xl font-bold font-mono text-indigo-600 dark:text-indigo-400 block">7.61</span>
-                  <span className="text-[9px] uppercase font-mono tracking-wider text-slate-450 block mt-1">B.Tech CGPA</span>
+              <div className="grid grid-cols-4 gap-3">
+                <div className="p-3 bg-white dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800 rounded-2xl text-center">
+                  <span className="text-xl font-bold font-mono text-indigo-600 dark:text-indigo-400 block">7.61</span>
+                  <span className="text-[8px] uppercase font-mono tracking-wider text-slate-450 block mt-1">CGPA</span>
                 </div>
-                <div className="p-3.5 bg-white dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800 rounded-2xl text-center">
-                  <span className="text-2xl font-bold font-mono text-emerald-600 dark:text-emerald-400 block">150+</span>
-                  <span className="text-[9px] uppercase font-mono tracking-wider text-slate-450 block mt-1">DSA Queries</span>
+                <div className="p-3 bg-white dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800 rounded-2xl text-center">
+                  <span className="text-xl font-bold font-mono text-emerald-600 dark:text-emerald-400 block">150+</span>
+                  <span className="text-[8px] uppercase font-mono tracking-wider text-slate-450 block mt-1">DSA</span>
                 </div>
-                <div className="p-3.5 bg-white dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800 rounded-2xl text-center">
-                  <span className="text-2xl font-bold font-mono text-cyan-600 dark:text-cyan-400 block">88%</span>
-                  <span className="text-[9px] uppercase font-mono tracking-wider text-slate-450 block mt-1">Commit Rate</span>
+                <div className="p-3 bg-white dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800 rounded-2xl text-center">
+                  <span className="text-xl font-bold font-mono text-cyan-600 dark:text-cyan-400 block">88%</span>
+                  <span className="text-[8px] uppercase font-mono tracking-wider text-slate-450 block mt-1">Commit</span>
                 </div>
-                <div className="p-3.5 bg-white dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800 rounded-2xl text-center">
-                  <span className="text-2xl font-bold font-mono text-pink-600 dark:text-pink-400 block">3</span>
-                  <span className="text-[9px] uppercase font-mono tracking-wider text-slate-450 block mt-1">Active Labs</span>
+                <div className="p-3 bg-white dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800 rounded-2xl text-center">
+                  <span className="text-xl font-bold font-mono text-pink-600 dark:text-pink-400 block">3</span>
+                  <span className="text-[8px] uppercase font-mono tracking-wider text-slate-450 block mt-1">Labs</span>
                 </div>
               </div>
             </motion.div>

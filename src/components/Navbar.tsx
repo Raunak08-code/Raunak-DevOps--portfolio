@@ -56,7 +56,7 @@ export default function Navbar({ onDownloadResume }: NavbarProps) {
       id="main-nav"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-white/85 backdrop-blur-md shadow-sm border-b border-slate-100"
+          ? "bg-[rgba(9,11,14,0.82)] backdrop-blur-md shadow-sm border-b border-[var(--border-soft)]"
           : "bg-transparent"
       }`}
     >
@@ -64,11 +64,11 @@ export default function Navbar({ onDownloadResume }: NavbarProps) {
         <div className="flex items-center justify-between h-16">
           {/* Logo or Brand */}
           <div className="flex-shrink-0 flex items-center gap-2 cursor-pointer" onClick={() => scrollToSection("home")}>
-            <div className="h-9 w-9 rounded-lg bg-indigo-600 flex items-center justify-center text-white font-mono font-bold text-lg shadow-sm">
+            <div className="h-9 w-9 rounded-lg bg-[var(--midnight-indigo)] flex items-center justify-center text-[var(--cloud-white)] font-mono font-bold text-lg shadow-sm">
               R
             </div>
-            <span className="font-sans font-bold tracking-tight text-slate-800 text-lg sm:text-xl hidden md:inline">
-              Raunak<span className="text-indigo-600">.devops</span>
+            <span className="font-sans font-bold tracking-tight text-[var(--cloud-white)] text-lg sm:text-xl hidden md:inline">
+              Raunak<span className="text-[var(--grey-blue)]">.devops</span>
             </span>
           </div>
 
@@ -81,15 +81,15 @@ export default function Navbar({ onDownloadResume }: NavbarProps) {
                 onClick={() => scrollToSection(item.id)}
                 className={`relative px-1 py-2 font-medium text-sm transition-colors cursor-pointer ${
                   activeSection === item.id
-                    ? "text-indigo-600"
-                    : "text-slate-600 hover:text-slate-900"
+                    ? "text-[var(--cloud-white)]"
+                    : "text-[var(--grey-blue)] hover:text-[var(--cloud-white)]"
                 }`}
               >
                 {item.label}
                 {activeSection === item.id && (
                   <motion.div
                     layoutId="activeIndicator"
-                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-indigo-600"
+                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-[var(--midnight-indigo)]"
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
@@ -104,7 +104,7 @@ export default function Navbar({ onDownloadResume }: NavbarProps) {
               id="navbar-resume-btn"
               onClick={onDownloadResume}
               title="Download Official PDF Resume"
-              className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-mono font-bold border border-indigo-200 text-indigo-600 bg-indigo-50 hover:bg-indigo-100/70 cursor-pointer active:scale-95 transition-all"
+              className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-mono font-bold border border-[var(--border-soft)] text-[var(--cloud-white)] bg-[var(--midnight-indigo)] hover:bg-[#2b3148] cursor-pointer active:scale-95 transition-all"
             >
               <FileText className="h-3.5 w-3.5" />
               <span>Resume</span>
@@ -115,7 +115,7 @@ export default function Navbar({ onDownloadResume }: NavbarProps) {
             <button
               id="mobile-menu-toggle"
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden p-2 rounded-lg text-slate-650 hover:bg-slate-100 transition-colors cursor-pointer"
+              className="md:hidden p-2 rounded-lg text-[var(--grey-blue)] hover:bg-[rgba(52,59,85,0.2)] transition-colors cursor-pointer"
               aria-label="Main menu"
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -133,7 +133,7 @@ export default function Navbar({ onDownloadResume }: NavbarProps) {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden border-b border-slate-100 bg-white/95 backdrop-blur-md"
+            className="md:hidden border-b border-[var(--border-soft)] bg-[rgba(9,11,14,0.96)] backdrop-blur-md"
           >
             <div className="px-4 pt-2 pb-4 space-y-1">
               {navItems.map((item) => (
@@ -143,8 +143,8 @@ export default function Navbar({ onDownloadResume }: NavbarProps) {
                   onClick={() => scrollToSection(item.id)}
                   className={`block w-full text-left px-3 py-2.5 rounded-lg text-base font-medium transition-colors ${
                     activeSection === item.id
-                      ? "bg-indigo-50 text-indigo-600"
-                      : "text-slate-650 hover:bg-slate-50"
+                      ? "bg-[rgba(52,59,85,0.3)] text-[var(--cloud-white)]"
+                      : "text-[var(--grey-blue)] hover:bg-[rgba(52,59,85,0.2)]"
                   }`}
                 >
                   {item.label}

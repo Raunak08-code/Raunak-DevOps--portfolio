@@ -214,10 +214,10 @@ export default function Terminal() {
     <div
       id="terminal-card"
       onClick={focusInput}
-      className="w-full bg-slate-950 border border-slate-800 dark:border-slate-800 rounded-2xl shadow-2xl p-4 overflow-hidden flex flex-col h-[400px] cursor-text font-mono text-sm leading-relaxed"
+      className="w-full bg-[var(--ink-black)] border border-[var(--border-soft)] rounded-2xl shadow-2xl p-4 overflow-hidden flex flex-col h-[400px] cursor-text font-mono text-sm leading-relaxed"
     >
       {/* Terminal Title Bar */}
-      <div className="flex items-center justify-between border-b border-slate-900 pb-3 mb-3">
+      <div className="flex items-center justify-between border-b border-[var(--border-soft)] pb-3 mb-3">
         <div className="flex items-center gap-2">
           <div className="flex gap-1.5">
             <span className="w-2.5 h-2.5 rounded-full bg-rose-500 block"></span>
@@ -226,10 +226,10 @@ export default function Terminal() {
           </div>
           <div className="flex items-center gap-1 ml-2">
             <TermIcon className="h-3.5 w-3.5 text-indigo-400" />
-            <span className="text-xs text-slate-400 font-bold font-mono">raunak@devops-node-1:~</span>
+            <span className="text-xs text-[var(--grey-blue)] font-bold font-mono">raunak@devops-node-1:~</span>
           </div>
         </div>
-        <div className="flex items-center gap-1 text-[10px] text-slate-600 bg-slate-900 px-2 py-0.5 rounded">
+        <div className="flex items-center gap-1 text-[10px] text-[var(--grey-blue)] bg-[var(--charcoal)] px-2 py-0.5 rounded">
           <span>PING LATENCY: 24ms</span>
         </div>
       </div>
@@ -239,12 +239,12 @@ export default function Terminal() {
         {history.map((item, idx) => (
           <div key={idx} id={`cmd-out-${idx}`} className="space-y-1">
             {item.cmd !== "system_init" && (
-              <div className="flex items-center text-indigo-400 font-bold text-xs">
-                <span className="text-slate-500 mr-1.5">$</span>
+              <div className="flex items-center text-[var(--cloud-white)] font-bold text-xs">
+                <span className="text-[var(--grey-blue)] mr-1.5">$</span>
                 <span>{item.cmd}</span>
               </div>
             )}
-            <div className="text-xs pl-2 border-l border-slate-900 text-slate-300">
+            <div className="text-xs pl-2 border-l border-[var(--border-soft)] text-[var(--cloud-white)]">
               {item.output}
             </div>
           </div>
@@ -252,9 +252,9 @@ export default function Terminal() {
       </div>
 
       {/* Terminal Command Chips Selection bar */}
-      <div className="flex flex-wrap items-center gap-1.5 pb-2 border-t border-slate-900 pt-2 mb-2 select-none overflow-x-auto whitespace-nowrap">
-        <span className="text-[10px] text-slate-500 mr-1 flex items-center gap-0.5 uppercase">
-          <Sparkles className="h-3 w-3 text-cyan-400" /> Quick Command:
+      <div className="flex flex-wrap items-center gap-1.5 pb-2 border-t border-[var(--border-soft)] pt-2 mb-2 select-none overflow-x-auto whitespace-nowrap">
+        <span className="text-[10px] text-[var(--grey-blue)] mr-1 flex items-center gap-0.5 uppercase">
+          <Sparkles className="h-3 w-3 text-[var(--grey-blue)]" /> Quick Command:
         </span>
         {promptChips.map(chip => (
           <button
@@ -264,7 +264,7 @@ export default function Terminal() {
               e.stopPropagation();
               handleCommand(chip);
             }}
-            className="text-[10px] bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:border-slate-700 px-2 py-1 rounded-md transition-all font-mono cursor-pointer active:scale-95"
+            className="text-[10px] bg-[var(--charcoal)] border border-[var(--border-soft)] text-[var(--grey-blue)] hover:text-[var(--cloud-white)] hover:border-[var(--grey-blue)] px-2 py-1 rounded-md transition-all font-mono cursor-pointer active:scale-95"
           >
             {chip}
           </button>
@@ -272,8 +272,8 @@ export default function Terminal() {
       </div>
 
       {/* Command Input Row */}
-      <div className="flex items-center text-indigo-400 pt-1.5 border-t border-slate-900">
-        <span className="text-slate-500 mr-2 font-bold">$</span>
+      <div className="flex items-center text-[var(--cloud-white)] pt-1.5 border-t border-[var(--border-soft)]">
+        <span className="text-[var(--grey-blue)] mr-2 font-bold">$</span>
         <input
           ref={inputRef}
           type="text"
@@ -282,7 +282,7 @@ export default function Terminal() {
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={handleKeyPress}
           placeholder="type help, docker ps, skills, projects..."
-          className="flex-1 bg-transparent border-none outline-none text-slate-100 font-mono text-xs placeholder-slate-700 caret-indigo-500"
+          className="flex-1 bg-transparent border-none outline-none text-[var(--cloud-white)] font-mono text-xs placeholder-[var(--grey-blue)] caret-[var(--midnight-indigo)]"
           autoComplete="off"
           autoCorrect="off"
           autoCapitalize="none"
@@ -290,7 +290,7 @@ export default function Terminal() {
         <button
           id="send-cmd-btn"
           onClick={() => handleCommand(input)}
-          className="text-xs text-indigo-400 hover:text-indigo-300 p-1 flex items-center justify-center cursor-pointer active:scale-90"
+          className="text-xs text-[var(--cloud-white)] hover:text-[var(--grey-blue)] p-1 flex items-center justify-center cursor-pointer active:scale-90"
         >
           <Send className="h-3.5 w-3.5" />
         </button>

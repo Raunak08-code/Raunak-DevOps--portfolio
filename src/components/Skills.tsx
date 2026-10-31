@@ -130,7 +130,7 @@ export default function Skills() {
                             whileInView={{ width: `${skill.proficiency}%` }}
                             viewport={{ once: true }}
                             transition={{ duration: 1, ease: "easeOut" }}
-                            className="absolute left-0 top-0 bottom-0 bg-gradient-to-r from-indigo-500 to-cyan-400 rounded-full"
+                            className="absolute left-0 top-0 bottom-0 bg-[var(--dusty-teal)] rounded-full"
                           />
                         </div>
                       </div>

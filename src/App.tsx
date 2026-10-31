@@ -4,10 +4,10 @@
  */
 
 import React, { useState, useEffect, useLayoutEffect } from "react";
+import { motion } from "motion/react";
 import { Analytics } from "@vercel/analytics/react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import Terminal from "./components/Terminal";
 import Education from "./components/Education";
 import Skills from "./components/Skills";
 import Learning from "./components/Learning";
@@ -17,10 +17,10 @@ import Contact from "./components/Contact";
 import FloatingDownload from "./components/FloatingDownload";
 import About from "./components/About";
 import { resumeData } from "./data";
-import { Award, Code2, Cpu, Sparkles, Terminal as TermIcon, FileBadge2 } from "lucide-react";
+import { Award, Code2, Cpu, FileBadge2, Cloud, Gamepad2, ServerCog, ArrowUpRight } from "lucide-react";
 
 export default function App() {
-  const [theme] = useState<"light">("light");
+  const [theme] = useState<"dark">("dark");
   const [currentTime, setCurrentTime] = useState("");
 
   // Track real time dynamically for DevOps UTC accuracy
@@ -58,7 +58,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-800 transition-colors duration-500 selection:bg-indigo-500/30 selection:text-indigo-900">
+    <div className="ink-indigo min-h-screen bg-[var(--ink-black)] text-[var(--cloud-white)] transition-colors duration-500 selection:bg-[var(--midnight-indigo)] selection:text-[var(--cloud-white)]">
       
       {/* 1. Header/Navbar with PDF download trigger */}
       <Navbar
@@ -71,25 +71,97 @@ export default function App() {
       {/* 3. About Section */}
       <About />
 
-      {/* Interactive Active bash console placed right under Hero for instant engagement */}
-      <section className="py-12 bg-slate-50 relative border-t border-slate-100">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-100 mb-2">
-              <TermIcon className="h-3.5 w-3.5 text-indigo-600" />
-              <span className="text-[10px] font-mono font-bold text-indigo-700 uppercase tracking-widest">Active Shell prompt</span>
-            </div>
-            <h3 className="font-sans font-bold text-lg text-slate-800">
-              Query the Resume Database directly
-            </h3>
-            <p className="text-xs text-slate-500 font-mono mt-1">
-              Terminal interface for direct candidate verification
+      {/* 4. The Road Ahead */}
+      <motion.section
+        id="road-ahead"
+        initial={{ opacity: 0, y: 18 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.5 }}
+        className="py-20 border-y border-[var(--border-soft)] bg-[rgba(17,23,32,0.8)]"
+      >
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-12 max-w-3xl">
+            <span className="inline-flex items-center gap-2 rounded-full border border-[var(--border-soft)] bg-[rgba(52,59,85,0.2)] px-3 py-1 text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-[var(--cloud-white)]/80">
+              <ArrowUpRight className="h-3.5 w-3.5 text-[var(--dusty-teal)]" />
+              Forward trajectory
+            </span>
+            <h2 className="mt-5 font-sans text-3xl font-black tracking-tight text-[var(--cloud-white)] sm:text-4xl">
+              The Road Ahead
+            </h2>
+            <p className="mt-4 text-base leading-relaxed text-[var(--cloud-white)]/80 sm:text-lg">
+              I want my career to sit at the intersection of reliable infrastructure, scalable cloud systems, and the creative future of interactive entertainment. My principal focus is DevOps and Cloud Engineering, while I continue to study the game development industry for its market dynamics, technical evolution, and long-term opportunities.
             </p>
           </div>
-          
-          <Terminal />
+
+          <div className="grid gap-5 md:grid-cols-3">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.45, delay: 0.05 }}
+              className="rounded-3xl border border-[var(--border-soft)] bg-[rgba(32,36,44,0.9)] p-5 shadow-[var(--shadow-soft)]"
+            >
+              <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-[rgba(124,156,158,0.12)] text-[var(--dusty-teal)]">
+                <ServerCog className="h-5 w-5" />
+              </div>
+              <h3 className="font-sans text-xl font-bold text-[var(--cloud-white)]">DevOps & Cloud Engineering</h3>
+              <p className="mt-3 text-sm leading-7 text-[var(--cloud-white)]/75">
+                I want to build a strong foundation in infrastructure, automation, CI/CD, observability, and scalable system design. My priority is to contribute to systems that are resilient, efficient, and ready for real-world production demands.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.45, delay: 0.12 }}
+              className="rounded-3xl border border-[var(--border-soft)] bg-[rgba(32,36,44,0.9)] p-5 shadow-[var(--shadow-soft)]"
+            >
+              <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-[rgba(52,59,85,0.18)] text-[var(--grey-blue)]">
+                <Gamepad2 className="h-5 w-5" />
+              </div>
+              <h3 className="font-sans text-xl font-bold text-[var(--cloud-white)]">Gaming Industry Research</h3>
+              <p className="mt-3 text-sm leading-7 text-[var(--cloud-white)]/75">
+                Alongside my core career path, I want to research the gaming industry, understand its market, business challenges, growth opportunities, and technological evolution. I am especially interested in how modern software ecosystems shape developer experiences and player engagement.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.45, delay: 0.18 }}
+              className="rounded-3xl border border-[var(--border-soft)] bg-[rgba(32,36,44,0.9)] p-5 shadow-[var(--shadow-soft)]"
+            >
+              <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-[rgba(124,156,158,0.12)] text-[var(--dusty-teal)]">
+                <Cloud className="h-5 w-5" />
+              </div>
+              <h3 className="font-sans text-xl font-bold text-[var(--cloud-white)]">Cloud Gaming</h3>
+              <p className="mt-3 text-sm leading-7 text-[var(--cloud-white)]/75">
+                I am particularly interested in Cloud Gaming and its future—how streaming infrastructure, edge compute, and cloud-native systems can transform performance, access, and scale in the gaming world. My long-term ambition is to explore how DevOps and Cloud technologies can contribute to that future.
+              </p>
+            </motion.div>
+          </div>
+
+          <div className="mt-8 rounded-3xl border border-[var(--border-soft)] bg-[rgba(17,23,32,0.9)] p-6 sm:p-7">
+            <p className="text-[10px] font-mono font-bold uppercase tracking-[0.22em] text-[var(--grey-blue)]">
+              Creative ambition
+            </p>
+            <p className="mt-3 text-base leading-8 text-[var(--cloud-white)]/85 sm:text-lg">
+              <span className="font-semibold text-[var(--cloud-white)]">Cataclysm</span> is my personal dream survival-game project. It represents the long-term creative ambition I hope to develop as my understanding of game design, systems thinking, and production workflows grows. I want to keep exploring this space with patience, curiosity, and a deeper technical foundation.
+            </p>
+          </div>
+
+          <p className="mt-8 text-center text-sm leading-7 text-[var(--cloud-white)]/70 sm:text-base">
+            My long-term vision is to build a career where DevOps and Cloud Engineering help power the future of gaming, while I continue learning, experimenting, and growing toward that ambition.
+          </p>
+
+          <p className="mt-6 text-center text-base font-bold italic leading-8 text-[var(--milk)] sm:text-lg">
+            “First, build the infrastructure. Then explore the possibilities.<br />Eventually, build something of my own.”
+          </p>
         </div>
-      </section>
+      </motion.section>
 
       {/* 4. Education Credentials Timeline */}
       <Education />
