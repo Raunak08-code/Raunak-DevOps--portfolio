@@ -23,12 +23,23 @@ export default function App() {
   const [theme] = useState<"dark">("dark");
   const [currentTime, setCurrentTime] = useState("");
 
-  // Track real time dynamically for DevOps UTC accuracy
+  // Track real time dynamically in IST for local site status
   useEffect(() => {
     const updateTime = () => {
-      const now = new Date();
-      setCurrentTime(now.toUTCString().replace("GMT", "UTC"));
+      const formatter = new Intl.DateTimeFormat("en-IN", {
+        timeZone: "Asia/Kolkata",
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: true,
+      });
+
+      setCurrentTime(`${formatter.format(new Date())} IST`);
     };
+
     updateTime();
     const interval = setInterval(updateTime, 1000);
     return () => clearInterval(interval);
@@ -179,54 +190,54 @@ export default function App() {
       <Blogs />
 
       {/* 8. Additional Certifications & Hackathons Timeline highlights */}
-      <section className="py-20 bg-slate-50 transition-colors border-b border-indigo-50/10">
+      <section className="py-20 bg-[var(--ink-black)] transition-colors border-b border-[var(--border-soft)]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-stretch">
             
             {/* Certifications Card Panel */}
-            <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/60 shadow-sm flex flex-col justify-between">
+            <div className="bg-[var(--charcoal)] rounded-3xl p-6 sm:p-8 border border-[var(--border-soft)] shadow-sm flex flex-col justify-between">
               <div>
-                <div className="flex items-center gap-2.5 mb-6 pb-3 border-b border-slate-100">
+                <div className="flex items-center gap-2.5 mb-6 pb-3 border-b border-[var(--border-soft)]">
                   <FileBadge2 className="h-6 w-6 text-indigo-500" />
-                  <h3 className="font-sans font-bold text-lg text-slate-800">
+                  <h3 className="font-sans font-bold text-lg text-[var(--cloud-white)]">
                     Certifications & Activities
                   </h3>
                 </div>
 
                 <div className="space-y-4">
                   {resumeData.certificationsList.map((cert, idx) => (
-                    <div key={idx} id={`cert-${idx}`} className="flex gap-3 text-sm text-slate-600 leading-relaxed bg-slate-50 p-4 rounded-2xl border border-slate-100">
+                    <div key={idx} id={`cert-${idx}`} className="flex gap-3 text-sm text-[var(--cloud-white)]/80 leading-relaxed bg-[rgba(17,23,32,0.8)] p-4 rounded-2xl border border-[var(--border-soft)]">
                       <Award className="h-5 w-5 text-indigo-500 flex-shrink-0 mt-0.5" />
                       <p>{cert}</p>
                     </div>
                   ))}
                 </div>
               </div>
-              <p className="text-[10px] font-mono text-slate-500 mt-6 select-none uppercase tracking-widest text-center">
+              <p className="text-[10px] font-mono text-[var(--grey-blue)] mt-6 select-none uppercase tracking-widest text-center">
                 All certificates verified with authentic creds
               </p>
             </div>
 
             {/* Hackathons / Hackaccino Activities Panel */}
-            <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/60 shadow-sm flex flex-col justify-between">
+            <div className="bg-[var(--charcoal)] rounded-3xl p-6 sm:p-8 border border-[var(--border-soft)] shadow-sm flex flex-col justify-between">
               <div>
-                <div className="flex items-center gap-2.5 mb-6 pb-3 border-b border-slate-100">
+                <div className="flex items-center gap-2.5 mb-6 pb-3 border-b border-[var(--border-soft)]">
                   <Cpu className="h-6 w-6 text-cyan-600" />
-                  <h3 className="font-sans font-bold text-lg text-slate-800">
+                  <h3 className="font-sans font-bold text-lg text-[var(--cloud-white)]">
                     Hackathons & Workshops
                   </h3>
                 </div>
 
                 <div className="space-y-4">
                   {resumeData.extraActivities.map((act, idx) => (
-                    <div key={idx} id={`activity-${idx}`} className="flex gap-3 text-sm text-slate-600 leading-relaxed bg-slate-50 p-4 rounded-2xl border border-slate-100">
+                    <div key={idx} id={`activity-${idx}`} className="flex gap-3 text-sm text-[var(--cloud-white)]/80 leading-relaxed bg-[rgba(17,23,32,0.8)] p-4 rounded-2xl border border-[var(--border-soft)]">
                       <Code2 className="h-5 w-5 text-cyan-600 flex-shrink-0 mt-0.5" />
                       <p>{act}</p>
                     </div>
                   ))}
                 </div>
               </div>
-              <p className="text-[10px] font-mono text-slate-500 mt-6 select-none uppercase tracking-widest text-center">
+              <p className="text-[10px] font-mono text-[var(--grey-blue)] mt-6 select-none uppercase tracking-widest text-center">
                 Engaged with standard developer pipelines
               </p>
             </div>

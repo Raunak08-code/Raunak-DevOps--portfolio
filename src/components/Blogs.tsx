@@ -117,7 +117,7 @@ export default function Blogs() {
   return (
     <section
       id="blogs"
-      className="py-20 bg-slate-50 dark:bg-slate-950 transition-colors duration-500 border-b border-slate-100 dark:border-slate-850"
+      className="py-20 bg-[var(--ink-black)] transition-colors duration-500 border-b border-[var(--border-soft)]"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Title */}
@@ -141,7 +141,7 @@ export default function Blogs() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.4 }}
-              className="bg-white dark:bg-slate-900 border border-slate-205/60 dark:border-slate-850 rounded-2xl p-5 flex flex-col justify-between hover:shadow-md hover:border-slate-300 dark:hover:border-slate-700 transition-all cursor-pointer group"
+              className="bg-[var(--charcoal)] border border-[var(--border-soft)] rounded-2xl p-5 flex flex-col justify-between hover:shadow-md hover:border-[var(--border-soft)] transition-all cursor-pointer group"
               onClick={() => setSelectedPost(post)}
             >
               <div>

@@ -68,7 +68,7 @@ async def process_incoming_email(email: IncomingEmail, tasks: BackgroundTasks):
   return (
     <section
       id="projects"
-      className="py-20 bg-white dark:bg-slate-900 transition-colors duration-500 border-b border-slate-100 dark:border-slate-850"
+      className="py-20 bg-[var(--ink-black)] transition-colors duration-500 border-b border-[var(--border-soft)]"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
@@ -92,7 +92,7 @@ async def process_incoming_email(email: IncomingEmail, tasks: BackgroundTasks):
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5 }}
-              className="bg-slate-50 dark:bg-slate-950/40 border border-slate-150/80 dark:border-slate-800 rounded-3xl p-6 md:p-8 flex flex-col justify-between hover:shadow-lg hover:border-slate-205 dark:hover:border-slate-700 transition-all relative group"
+              className="bg-[var(--charcoal)] border border-[var(--border-soft)] rounded-3xl p-6 md:p-8 flex flex-col justify-between hover:shadow-lg hover:border-[var(--border-soft)] transition-all relative group"
             >
               <div>
                 {/* Meta details header info */}
@@ -171,7 +171,7 @@ async def process_incoming_email(email: IncomingEmail, tasks: BackgroundTasks):
                 </p>
                 {proj.id === "northstar" && (
                   <div className="mb-5 flex flex-wrap gap-2">
-                    <span className="rounded-full border border-[rgba(124,156,158,0.35)] bg-[rgba(124,156,158,0.08)] px-2.5 py-1 text-[10px] font-mono font-bold uppercase tracking-[0.18em] text-slate-700 dark:text-slate-300">
+                    <span className="rounded-full border border-[rgba(124,156,158,0.35)] bg-red-500 px-2.5 py-1 text-[10px] font-mono font-bold uppercase tracking-[0.18em] text-slate-700 dark:text-slate-300">
                       In Development
                     </span>
                     <span className="rounded-full border border-indigo-200/70 bg-indigo-50 dark:border-indigo-900/50 dark:bg-indigo-950/40 px-2.5 py-1 text-[10px] font-mono font-bold uppercase tracking-[0.18em] text-indigo-700 dark:text-indigo-300">
@@ -232,7 +232,7 @@ async def process_incoming_email(email: IncomingEmail, tasks: BackgroundTasks):
         {/* DSA & PROBLEM SOLVING INTEGRATED GRID */}
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch pt-8 border-t border-slate-1050 dark:border-slate-800/50">
           {/* Summary / Stats Card */}
-          <div className="lg:col-span-5 bg-slate-50 dark:bg-slate-950/40 border border-slate-150/80 dark:border-slate-800 rounded-3xl p-6 md:p-8 flex flex-col justify-between">
+          <div className="lg:col-span-5 bg-[var(--charcoal)] border border-[var(--border-soft)] rounded-3xl p-6 md:p-8 flex flex-col justify-between">
             <div>
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-50 dark:bg-cyan-950/20 border border-cyan-100 dark:border-cyan-900/40 mb-4">
                 <Code2 className="h-3.5 w-3.5 text-cyan-600 dark:text-cyan-400" />

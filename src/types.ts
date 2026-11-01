@@ -17,6 +17,21 @@ export interface ProjectItem {
   tags: string[];
 }
 
+export interface LearningModule {
+  title: string;
+  status: string;
+  description: string;
+  link: string;
+}
+
+export interface LearningProgress {
+  platform: string;
+  username: string;
+  level: string;
+  completedModules: number;
+  modules: LearningModule[];
+}
+
 export interface SkillGroup {
   category: string;
   skills: { name: string; proficiency: number }[];
@@ -45,6 +60,7 @@ export interface ResumeData {
   education: EducationItem[];
   skills: SkillGroup[];
   projects: ProjectItem[];
+  learningProgress: LearningProgress;
   problemSolvingDetails: {
     description: string[];
     leetcodeMockSolved: number;

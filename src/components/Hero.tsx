@@ -68,7 +68,7 @@ export default function Hero({ onDownloadResume }: HeroProps) {
                 variants={itemVariants}
                 className="font-sans font-bold text-xl sm:text-2xl md:text-3xl text-[var(--grey-blue)]"
               >
-                DevOps Engineer | Cloud & Platform Engineering Enthusiast 
+                DevOps Engineer | Cloud Engineering & Cloud Gaming Enthusiast 
               </motion.h2>
             </div>
 
@@ -87,15 +87,15 @@ export default function Hero({ onDownloadResume }: HeroProps) {
               className="grid grid-cols-3 gap-4 max-w-md pt-2"
             >
               <div className="p-3 bg-[var(--charcoal)] rounded-xl border border-[var(--border-soft)] shadow-sm">
-                <span className="text-xl font-bold font-mono text-[var(--cloud-white)] block">150+</span>
+                <span className="text-xl font-bold font-mono text-[var(--cloud-white)] block">100+</span>
                 <span className="text-[10px] uppercase font-mono tracking-wider text-[var(--grey-blue)]">DSA Solved</span>
               </div>
               <div className="p-3 bg-[var(--charcoal)] rounded-xl border border-[var(--border-soft)] shadow-sm">
-                <span className="text-xl font-bold font-mono text-[var(--cloud-white)] block">3</span>
+                <span className="text-xl font-bold font-mono text-[var(--cloud-white)] block">4</span>
                 <span className="text-[10px] uppercase font-mono tracking-wider text-[var(--grey-blue)]">DevOps Apps</span>
               </div>
               <div className="p-3 bg-[var(--charcoal)] rounded-xl border border-[var(--border-soft)] shadow-sm">
-                <span className="text-xl font-bold font-mono text-[var(--cloud-white)] block">7.61</span>
+                <span className="text-xl font-bold font-mono text-[var(--cloud-white)] block">7.23</span>
                 <span className="text-[10px] uppercase font-mono tracking-wider text-[var(--grey-blue)]">B.Tech CGPA</span>
               </div>
             </motion.div>
@@ -201,7 +201,7 @@ export default function Hero({ onDownloadResume }: HeroProps) {
                     <span className="w-1.5 h-1.5 rounded-full bg-[var(--cloud-white)] block"></span>
                     <span className="font-mono font-bold text-[var(--cloud-white)]">leetcode-dsa-runner</span>
                   </div>
-                  <span className="font-mono text-[10px] text-[var(--grey-blue)]">150+ CODES PASS</span>
+                  <span className="font-mono text-[10px] text-[var(--grey-blue)]">100+ CODES PASS</span>
                 </div>
               </div>
 

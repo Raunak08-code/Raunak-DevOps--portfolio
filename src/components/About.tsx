@@ -23,7 +23,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="py-20 bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-850/60 overflow-hidden relative"
+      className="py-20 bg-[var(--ink-black)] border-b border-[var(--border-soft)] overflow-hidden relative"
     >
       <div className="absolute inset-0 pointer-events-none opacity-[0.02] dark:opacity-[0.05]">
         <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-indigo-550 rounded-full blur-[120px] -translate-y-1/2" />
@@ -86,7 +86,7 @@ export default function About() {
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
               variants={fadeUpVariants}
-              className="bg-slate-50 dark:bg-slate-950 rounded-3xl p-6 border border-slate-200/70 dark:border-slate-850 shadow-sm"
+              className="bg-[var(--charcoal)] rounded-3xl p-6 border border-[var(--border-soft)] shadow-sm"
             >
               <div className="flex items-center gap-2 mb-4 pb-2 border-b border-slate-200 dark:border-slate-850">
                 <BookOpen className="h-4 w-4 text-cyan-500" />
@@ -126,7 +126,7 @@ export default function About() {
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
               variants={fadeUpVariants}
-              className="bg-slate-50 dark:bg-slate-950 rounded-3xl p-6 border border-slate-200/70 dark:border-slate-850 shadow-sm space-y-4"
+              className="bg-[var(--charcoal)] rounded-3xl p-6 border border-[var(--border-soft)] shadow-sm space-y-4"
             >
               <div className="flex items-center gap-2 pb-2 border-b border-slate-200 dark:border-slate-850">
                 <Layers className="h-4 w-4 text-emerald-500" />
@@ -137,11 +137,11 @@ export default function About() {
 
               <div className="grid grid-cols-4 gap-3">
                 <div className="p-3 bg-white dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800 rounded-2xl text-center">
-                  <span className="text-xl font-bold font-mono text-indigo-600 dark:text-indigo-400 block">7.61</span>
+                  <span className="text-xl font-bold font-mono text-indigo-600 dark:text-indigo-400 block">7.23</span>
                   <span className="text-[8px] uppercase font-mono tracking-wider text-slate-450 block mt-1">CGPA</span>
                 </div>
                 <div className="p-3 bg-white dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800 rounded-2xl text-center">
-                  <span className="text-xl font-bold font-mono text-emerald-600 dark:text-emerald-400 block">150+</span>
+                  <span className="text-xl font-bold font-mono text-emerald-600 dark:text-emerald-400 block">100+</span>
                   <span className="text-[8px] uppercase font-mono tracking-wider text-slate-450 block mt-1">DSA</span>
                 </div>
                 <div className="p-3 bg-white dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800 rounded-2xl text-center">
@@ -149,7 +149,7 @@ export default function About() {
                   <span className="text-[8px] uppercase font-mono tracking-wider text-slate-450 block mt-1">Commit</span>
                 </div>
                 <div className="p-3 bg-white dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800 rounded-2xl text-center">
-                  <span className="text-xl font-bold font-mono text-pink-600 dark:text-pink-400 block">3</span>
+                  <span className="text-xl font-bold font-mono text-pink-600 dark:text-pink-400 block">4</span>
                   <span className="text-[8px] uppercase font-mono tracking-wider text-slate-450 block mt-1">Labs</span>
                 </div>
               </div>

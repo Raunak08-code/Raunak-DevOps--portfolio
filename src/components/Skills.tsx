@@ -45,7 +45,7 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="py-20 bg-slate-50 dark:bg-slate-950 transition-colors duration-500 border-b border-slate-100 dark:border-slate-850"
+      className="py-20 bg-[var(--ink-black)] transition-colors duration-500 border-b border-[var(--border-soft)]"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Heading */}
@@ -106,7 +106,7 @@ export default function Skills() {
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.3 }}
                 id={`skill-group-${group.category.replace(/[^a-zA-Z0-9]/g, "-")}`}
-                className="bg-white dark:bg-slate-900 border border-slate-200/55 dark:border-slate-800/60 p-6 rounded-2xl shadow-sm flex flex-col justify-between"
+                className="bg-[var(--charcoal)] border border-[var(--border-soft)] p-6 rounded-2xl shadow-sm flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center gap-2 mb-6 pb-3 border-b border-slate-100 dark:border-slate-800">

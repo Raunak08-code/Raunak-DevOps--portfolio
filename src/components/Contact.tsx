@@ -58,7 +58,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="py-20 bg-white dark:bg-slate-900 transition-colors duration-500 overflow-hidden"
+      className="py-20 bg-[var(--ink-black)] transition-colors duration-500 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
@@ -159,7 +159,7 @@ export default function Contact() {
 
           {/* Contact Input Form Right Panel */}
           <div className="lg:col-span-7">
-            <div className="bg-slate-50 dark:bg-slate-950/40 border border-slate-150/80 dark:border-slate-850 p-6 sm:p-8 rounded-3xl shadow-sm">
+            <div className="bg-[var(--charcoal)] border border-[var(--border-soft)] p-6 sm:p-8 rounded-3xl shadow-sm">
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {/* Name field */}

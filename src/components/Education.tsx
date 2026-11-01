@@ -137,7 +137,7 @@ export default function Education() {
   return (
     <section
       id="education"
-      className="py-20 bg-white dark:bg-slate-900 border-y border-slate-100 dark:border-slate-850 transition-colors duration-500"
+      className="py-20 bg-[var(--ink-black)] border-y border-[var(--border-soft)] transition-colors duration-500"
     >
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
@@ -147,7 +147,7 @@ export default function Education() {
           </h2>
           <div className="mt-2 h-1 w-16 bg-gradient-to-r from-indigo-500 to-cyan-500 mx-auto rounded-full" />
           <p className="text-sm text-slate-500 dark:text-slate-400 mt-3 font-mono">
-            Extracted credentials from parsed resume
+            Extracted credentials from official AKTU transcript and syllabus, showcasing academic performance and subject mastery.
           </p>
         </div>
 
@@ -169,7 +169,7 @@ export default function Education() {
               </div>
 
               {/* Course Card Content */}
-              <div className="bg-slate-50 dark:bg-slate-950/40 border border-slate-100 dark:border-slate-800 pl-6 pr-6 pt-5 pb-5 rounded-2xl shadow-sm hover:shadow-md hover:border-slate-200 dark:hover:border-slate-700 transition-all">
+              <div className="bg-[var(--charcoal)] border border-[var(--border-soft)] pl-6 pr-6 pt-5 pb-5 rounded-2xl shadow-sm hover:shadow-md hover:border-[var(--border-soft)] transition-all">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                   <span className="font-mono text-xs font-semibold px-2.5 py-1 bg-indigo-50 dark:bg-indigo-950/50 text-indigo-700 dark:text-indigo-300 rounded-full w-fit flex items-center gap-1.5">
                     <Calendar className="h-3 w-3" />

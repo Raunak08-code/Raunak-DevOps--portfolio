@@ -172,7 +172,51 @@ export default function FloatingDownload({ theme }: FloatingDownloadProps) {
       });
       y += 2.5;
 
-      // 4. CORE PROJECTS
+      // 4. CURRENT LEARNING PROGRESS
+      addSectionHeader("Current Learning");
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(9.5);
+      doc.setTextColor(textColor[0], textColor[1], textColor[2]);
+      doc.text(`${resumeData.learningProgress.platform} | Username: ${resumeData.learningProgress.username} | ${resumeData.learningProgress.level}`, margin, y);
+      y += 5;
+
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(8.5);
+      doc.setTextColor(lightTextColor[0], lightTextColor[1], lightTextColor[2]);
+      doc.text(`Completed Modules: ${resumeData.learningProgress.completedModules}`, margin, y);
+      y += 5;
+
+      resumeData.learningProgress.modules.forEach((module, idx) => {
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(8.8);
+        doc.setTextColor(textColor[0], textColor[1], textColor[2]);
+        doc.text(`${String(idx + 1).padStart(2, "0")}. ${module.title}`, margin, y);
+        y += 4;
+
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(8);
+        doc.setTextColor(accentColor[0], accentColor[1], accentColor[2]);
+        doc.text(`Status: ${module.status}`, margin + 4, y);
+        y += 4;
+
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(8.1);
+        doc.setTextColor(textColor[0], textColor[1], textColor[2]);
+        const detailLines = doc.splitTextToSize(module.description, pageWidth - margin * 2 - 8);
+        detailLines.forEach((line: string) => {
+          doc.text(line, margin + 4, y);
+          y += 4;
+        });
+
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(7.5);
+        doc.setTextColor(primaryColor[0], primaryColor[1], primaryColor[2]);
+        doc.text(`Study Material: ${module.link}`, margin + 4, y);
+        y += 6;
+      });
+      y += 2;
+
+      // 5. CORE PROJECTS
       addSectionHeader("Systems & DevOps Projects");
       resumeData.projects.forEach((proj) => {
         doc.setFont("helvetica", "bold");
@@ -205,7 +249,7 @@ export default function FloatingDownload({ theme }: FloatingDownloadProps) {
         y += 7;
       });
 
-      // 5. TECHNICAL STANDOUTS & PROBLEM SOLVING (Verbatim representation)
+      // 6. TECHNICAL STANDOUTS & PROBLEM SOLVING (Verbatim representation)
       addSectionHeader("Algorithms & Standout Achievements");
       doc.setFont("helvetica", "bold");
       doc.setFontSize(9.5);

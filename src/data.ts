@@ -14,7 +14,7 @@ export const resumeData: ResumeData = {
     {
       degree: "B.Tech CS-AI",
       institution: "GL Bajaj Institute of Technology and Management",
-      score: "CGPA: 7.61",
+      score: "CGPA: 7.23",
       year: "2023 - 2027"
     },
     {
@@ -124,9 +124,35 @@ export const resumeData: ResumeData = {
       tags: ["Docker", "Docker Hub", "GitHub Actions", "CI/CD", "AWS EC2", "Nginx", "Vite", "React"]
     }
   ],
+  learningProgress: {
+    platform: "Microsoft Learn",
+    username: "raunak08",
+    level: "Level 3",
+    completedModules: 3,
+    modules: [
+      {
+        title: "Plan with DevOps",
+        status: "Completed",
+        description: "Learned about DevOps culture, Agile planning, collaboration and planning projects using GitHub Projects.",
+        link: "https://learn.microsoft.com/en-gb/training/modules/plan-with-devops/"
+      },
+      {
+        title: "Develop with DevOps",
+        status: "Completed",
+        description: "Explored Git, GitHub Flow, source control, continuous integration, shift-left testing and shift-left security.",
+        link: "https://learn.microsoft.com/en-gb/training/modules/develop-with-devops/"
+      },
+      {
+        title: "Deliver with DevOps",
+        status: "Completed",
+        description: "Explored continuous delivery, Infrastructure as Code, deployment practices and CI/CD workflows using GitHub Actions.",
+        link: "https://learn.microsoft.com/en-gb/training/modules/deliver-with-devops/"
+      }
+    ]
+  },
   problemSolvingDetails: {
     description: [
-      "Solved 150+ complex DSA problems on Leetcode utilizing C++ with focus on runtime and memory space complexity optimization.",
+      "Solved 100+ complex DSA problems on Leetcode utilizing C++ with focus on runtime and memory space complexity optimization.",
       "Thorough understanding of low-level memory layouts, pointers, custom containers, and standard template library (STL)."
     ],
     leetcodeMockSolved: 112,
@@ -357,6 +383,27 @@ We are designing DevEx-IDP as a fast, clean portal that coordinates third-party 
 - **Git Orchestration**: Instantly provisions a repository using custom GitHub API wrappers.
 - **Project Tracking Integration**: Triggers automated Jira workspace creation with standardized Kanban boards.
 - **Environment Spin-up**: Provides instant local config downloads to get developers from zero to code in 60 seconds.`
+  },
+  {
+    id: "loss-of-last-3-months",
+    title: "The Loss of Last 3 Months",
+    excerpt: "From mid-July to the end of October, I had nothing to show except time lost and sleep. I am back on track now, and the game is on again.",
+    date: "October 31, 2026",
+    readTime: "4 min read",
+    tags: ["Life", "Reflection", "Work", "Reset"],
+    content: `# The Loss of Last 3 Months
+
+From mid-July to the end of October, I had almost nothing. Not a meaningful streak, not a clear routine, not much work, and not much focus. I was mostly lying down and sleeping. That is the honest version.
+
+It was not a dramatic collapse or some visible failure. It was just a quiet period where my energy, intention, and discipline dropped out at the same time. Days passed without much structure. I was not producing anything useful, and I was not moving in any direction that mattered.
+
+There were no big breakthroughs during that time. No extra learning, no project depth, no sharp momentum. Just a long stretch of inactivity that I cannot pretend was anything else.
+
+The part that matters now is that I am back in motion. Not in a perfect state, not fully recovered, but enough to move again.
+
+The gap is clear. The time was lost. The work was not done. But the important part is that the state changed. I am back on track. I am working again. I am building again.
+
+THE GAME IS ON AGAIN.`
   },
   {
     id: "auto-scroll-debugging-fix",

@@ -68,7 +68,7 @@ export default function Navbar({ onDownloadResume }: NavbarProps) {
               R
             </div>
             <span className="font-sans font-bold tracking-tight text-[var(--cloud-white)] text-lg sm:text-xl hidden md:inline">
-              Raunak<span className="text-[var(--grey-blue)]">.devops</span>
+              RAUNAK<span className="text-[var(--grey-blue)]">.DevOps</span>
             </span>
           </div>
 
