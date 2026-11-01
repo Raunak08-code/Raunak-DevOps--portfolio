@@ -12,6 +12,7 @@ export interface ProjectItem {
   github: string;
   live?: string;
   docker?: string;
+  report?: string;
   description: string[];
   tags: string[];
 }

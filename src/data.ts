@@ -94,8 +94,20 @@ export const resumeData: ResumeData = {
         "Applied site-reliability and DevOps best practices for real-time memory, CPU, and disk usage tracking."
       ],
       tags: ["Docker", "Docker-compose", "Prometheus", "Grafana", "Linux", "Python", "System Logs", "CI/CD Setup", "AWS (EC2/ECR/S3)"]
-    }
-    ,
+    },
+    {
+      id: "northstar",
+      title: "NorthStar",
+      subtitle: "Insights for Every Development Journey",
+      github: "https://github.com/Raunak08-code",
+      report: "/docs/northstar-report.pdf",
+      description: [
+        "NorthStar is an evolving DevOps analytics platform designed to bring development activity, build history, and engineering delivery insights into one place.",
+        "Its long-term vision is to help developers and teams understand their development journey through actionable engineering metrics.",
+        "Current roadmap includes V1: GitHub statistics and build history, V2: deployment metrics, V3: DORA metrics, and V4: team analytics."
+      ],
+      tags: ["Go", "Python", "FastAPI", "PostgreSQL", "SQLAlchemy", "GitHub REST API", "Webhooks", "Docker"]
+    },
     {
       id: "my-portfolio",
       title: "MY portfolio",

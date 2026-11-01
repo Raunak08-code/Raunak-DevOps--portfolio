@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Github, FolderGit2, Cpu, BarChart2, CheckSquare, Code2, Copy, Check, Terminal, ExternalLink } from "lucide-react";
+import { Github, FolderGit2, Cpu, BarChart2, CheckSquare, Code2, Copy, Check, Terminal, ExternalLink, FileText } from "lucide-react";
 import { resumeData } from "../data";
 
 export default function Projects() {
@@ -109,6 +109,19 @@ async def process_incoming_email(email: IncomingEmail, tasks: BackgroundTasks):
                   
                   {/* Project external links: GitHub, Live, Docker Hub (when available) */}
                   <div className="flex items-center gap-2">
+                    {proj.report && (
+                      <a
+                        id={`project-report-link-${proj.id}`}
+                        href={proj.report}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="p-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:scale-105 transition-all cursor-pointer shadow-sm"
+                        title="View Full Report"
+                      >
+                        <FileText className="h-4 w-4" />
+                      </a>
+                    )}
+
                     {proj.github && (
                       <a
                         id={`project-github-link-${proj.id}`}
@@ -153,9 +166,19 @@ async def process_incoming_email(email: IncomingEmail, tasks: BackgroundTasks):
                 <h3 className="font-sans font-extrabold text-xl sm:text-2xl text-slate-900 dark:text-slate-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                   {proj.title}
                 </h3>
-                <p className="font-mono text-xs text-indigo-600 dark:text-indigo-400 font-semibold mb-6 italic">
+                <p className="font-mono text-xs text-indigo-600 dark:text-indigo-400 font-semibold mb-2 italic">
                   {proj.subtitle}
                 </p>
+                {proj.id === "northstar" && (
+                  <div className="mb-5 flex flex-wrap gap-2">
+                    <span className="rounded-full border border-[rgba(124,156,158,0.35)] bg-[rgba(124,156,158,0.08)] px-2.5 py-1 text-[10px] font-mono font-bold uppercase tracking-[0.18em] text-slate-700 dark:text-slate-300">
+                      In Development
+                    </span>
+                    <span className="rounded-full border border-indigo-200/70 bg-indigo-50 dark:border-indigo-900/50 dark:bg-indigo-950/40 px-2.5 py-1 text-[10px] font-mono font-bold uppercase tracking-[0.18em] text-indigo-700 dark:text-indigo-300">
+                      DevOps Analytics / Internal Developer Platform
+                    </span>
+                  </div>
+                )}
 
                 {/* Bullet details extracted from PDF resume verbatim */}
                 <ul className="space-y-3 mb-8">
@@ -170,7 +193,28 @@ async def process_incoming_email(email: IncomingEmail, tasks: BackgroundTasks):
 
               {/* Technologies Badge elements */}
               <div>
-                <div className="flex flex-wrap gap-1.5 pt-4 border-t border-slate-200/50 dark:border-slate-800/80">
+                {proj.id === "northstar" && (
+                  <div className="mt-6 flex flex-col sm:flex-row gap-3">
+                    <a
+                      href={proj.report || "/docs/northstar-report.pdf"}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center justify-center rounded-xl border border-[var(--border-soft)] bg-[rgba(52,59,85,0.2)] px-4 py-2.5 text-xs font-mono font-bold uppercase tracking-[0.14em] text-[var(--cloud-white)] transition-colors hover:bg-[rgba(52,59,85,0.35)]"
+                    >
+                      View Full Report
+                    </a>
+                    <a
+                      href={proj.github}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center justify-center rounded-xl border border-[var(--border-soft)] bg-white/5 px-4 py-2.5 text-xs font-mono font-bold uppercase tracking-[0.14em] text-[var(--cloud-white)] transition-colors hover:bg-white/10"
+                    >
+                      GitHub Repository
+                    </a>
+                  </div>
+                )}
+
+                <div className="flex flex-wrap gap-1.5 pt-4 border-t border-slate-200/50 dark:border-slate-800/80 mt-6">
                   {proj.tags.map((tag, tidx) => (
                     <span
                       key={tidx}
