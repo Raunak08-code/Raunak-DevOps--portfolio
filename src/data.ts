@@ -9,7 +9,7 @@ export const resumeData: ResumeData = {
   linkedin: "https://www.linkedin.com/in/raunak-pandey-1801202a0/",
   github: "https://github.com/Raunak08-code",
   dockerHub: "https://hub.docker.com/repositories/raunak08",
-  instagram: "https://www.instagram.com/raukey_/",
+  instagram: "https://www.instagram.com/raukey_?psln=ZDhxZGJqdHB3ZDNx",
   education: [
     {
       degree: "B.Tech CSE-AI",

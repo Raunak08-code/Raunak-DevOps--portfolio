@@ -1,45 +1,46 @@
-import { Github, Instagram, Linkedin, Mail, Phone } from "lucide-react";
+import { Github, Instagram, Linkedin, MailOpen, PhoneCall } from "lucide-react";
 import { resumeData } from "../data";
 
 const contactMethods: {
   label: string;
   value: string;
   href: string;
-  icon: typeof Phone;
-  external?: boolean;
+  icon: typeof PhoneCall;
+  openInNewTab?: boolean;
 }[] = [
   {
     label: "Phone",
     value: resumeData.phone,
     href: `tel:${resumeData.phone.replace(/[^0-9+]/g, "")}`,
-    icon: Phone,
+    icon: PhoneCall,
   },
   {
-    label: "Mail",
+    label: "Email",
     value: resumeData.email,
     href: `mailto:${resumeData.email}`,
-    icon: Mail,
+    icon: MailOpen,
+    openInNewTab: true,
   },
   {
     label: "Instagram",
     value: "Instagram profile",
     href: resumeData.instagram,
     icon: Instagram,
-    external: true,
+    openInNewTab: true,
   },
   {
     label: "LinkedIn",
     value: "LinkedIn profile",
     href: resumeData.linkedin,
     icon: Linkedin,
-    external: true,
+    openInNewTab: true,
   },
   {
     label: "GitHub",
     value: "GitHub profile",
     href: resumeData.github,
     icon: Github,
-    external: true,
+    openInNewTab: true,
   },
 ].filter((method) => method.href !== undefined);
 
@@ -64,12 +65,12 @@ export default function Contact() {
         </div>
 
         <div className="mt-12 flex flex-wrap gap-5 sm:gap-7">
-          {contactMethods.map(({ label, value, href, icon: Icon, external }) => (
+          {contactMethods.map(({ label, value, href, icon: Icon, openInNewTab }) => (
             <a
               key={label}
               href={href}
-              target={external ? "_blank" : undefined}
-              rel={external ? "noreferrer" : undefined}
+              target={openInNewTab ? "_blank" : undefined}
+              rel={openInNewTab ? "noopener noreferrer" : undefined}
               aria-label={`${label}: ${value}`}
               className="contact-circle group"
             >

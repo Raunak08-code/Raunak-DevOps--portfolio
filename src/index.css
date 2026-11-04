@@ -371,6 +371,7 @@ body {
 }
 
 .landing-screen {
+  position: relative;
   display: flex;
   min-height: 100vh;
   min-height: 100svh;
@@ -382,6 +383,15 @@ body {
   color: var(--cloud-white);
   cursor: pointer;
   text-align: left;
+}
+
+.landing-signature {
+  position: absolute;
+  right: clamp(1.5rem, 5vw, 4rem);
+  bottom: clamp(1.5rem, 5vh, 3rem);
+  width: clamp(8rem, 18vw, 14rem);
+  height: auto;
+  pointer-events: none;
 }
 
 .landing-screen:focus-visible {

@@ -68,6 +68,11 @@ function LandingPage({ onEnter }: { onEnter: () => void }) {
           <span className="landing-last-name">PANDEY</span>
         </span>
       </span>
+      <img
+        className="landing-signature"
+        src="/signature.webp"
+        alt="Raunak Pandey's signature"
+      />
     </button>
   );
 }
