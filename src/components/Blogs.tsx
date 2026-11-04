@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { BookOpen, Calendar, Clock, ArrowRight, X, Sparkles, BookMarked, Code } from "lucide-react";
+import { BookOpen, Calendar, ArrowRight, X, Sparkles, BookMarked, Code } from "lucide-react";
 import { blogPosts } from "../data";
 import { BlogPost } from "../types";
 
@@ -117,23 +117,23 @@ export default function Blogs() {
   return (
     <section
       id="blogs"
-      className="py-20 bg-[var(--ink-black)] transition-colors duration-500 border-b border-[var(--border-soft)]"
+      className="portfolio-art portfolio-art-blogs border-b border-[var(--border-soft)] bg-[var(--ink-black)] py-16 transition-colors duration-500 sm:py-20"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Title */}
-        <div className="text-center mb-16">
-          <h2 className="font-sans font-extrabold text-3xl sm:text-4xl text-slate-900 dark:text-slate-100 uppercase tracking-tight">
-            DevOps Dispatch & Logs
-          </h2>
-          <div className="mt-2 h-1 w-16 bg-gradient-to-r from-indigo-500 to-cyan-500 mx-auto rounded-full" />
+        <div className="mb-10 text-left">
+          <h1 className="font-sans text-3xl font-extrabold uppercase tracking-tight text-slate-900 dark:text-slate-100 sm:text-4xl">
+            Blogs
+          </h1>
+          <div className="mt-2 h-1 w-16 rounded-full bg-gradient-to-r from-indigo-500 to-cyan-500" />
           <p className="text-sm text-slate-500 dark:text-slate-400 mt-3 font-mono">
-            Read Raunak's expert guides about systems metrics, automation, and configurations
+            Notes and practical guides on systems, automation, and engineering.
           </p>
         </div>
 
-        {/* Blogs cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {sortedBlogPosts.map((post) => (
+        {/* Open blog grid */}
+        <div className="blogs-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+          {sortedBlogPosts.map((post, index) => (
             <motion.div
               key={post.id}
               id={`blog-card-${post.id}`}
@@ -141,17 +141,25 @@ export default function Blogs() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.4 }}
-              className="bg-[var(--charcoal)] border border-[var(--border-soft)] rounded-2xl p-5 flex flex-col justify-between hover:shadow-md hover:border-[var(--border-soft)] transition-all cursor-pointer group"
+              role="button"
+              tabIndex={0}
+              aria-label={`Read blog: ${post.title}`}
+              className={`blog-entry flex cursor-pointer flex-col justify-between transition-colors group ${
+                index === sortedBlogPosts.length - 1 ? "blog-entry-last" : ""
+              }`}
               onClick={() => setSelectedPost(post)}
+              onKeyDown={(event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                  event.preventDefault();
+                  setSelectedPost(post);
+                }
+              }}
             >
               <div>
                 {/* Meta details */}
-                <div className="flex items-center gap-4 text-slate-400 text-xs mb-4 font-mono select-none">
+                <div className="mb-4 flex items-center gap-4 text-xs font-mono text-slate-400 select-none">
                   <span className="flex items-center gap-1 leading-none">
                     <Calendar className="h-3.5 w-3.5" /> {post.date}
-                  </span>
-                  <span className="flex items-center gap-1 leading-none">
-                    <Clock className="h-3.5 w-3.5" /> {post.readTime}
                   </span>
                 </div>
 
@@ -164,7 +172,7 @@ export default function Blogs() {
               </div>
 
               {/* Tag elements footer */}
-              <div className="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between mt-auto">
+              <div className="mt-auto flex items-center justify-between pt-4">
                 <div className="flex flex-wrap gap-1">
                   {post.tags.slice(0, 2).map((tag) => (
                     <span
@@ -186,16 +194,16 @@ export default function Blogs() {
         {/* FULL SCREEN READING MODAL */}
         <AnimatePresence>
           {selectedPost && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm">
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-[rgba(9,11,14,0.48)] p-4 backdrop-blur-sm">
               <motion.div
                 id="blog-reading-modal"
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
-                className="w-full max-w-3xl bg-white dark:bg-slate-900 rounded-2xl shadow-2xl overflow-hidden border border-slate-100 dark:border-slate-800 flex flex-col max-h-[85vh]"
+                className="flex max-h-[85vh] w-full max-w-3xl flex-col overflow-hidden border border-white/15 bg-[rgba(17,23,32,0.78)] shadow-2xl backdrop-blur-xl"
               >
                 {/* Modal close / header bar wrapper */}
-                <div className="p-4 bg-slate-50 dark:bg-slate-955/80 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                <div className="flex items-center justify-between border-b border-white/10 bg-white/[0.03] p-4">
                   <div className="flex items-center gap-2">
                     <BookMarked className="h-5 w-5 text-indigo-500" />
                     <span className="text-xs font-mono font-bold text-slate-500">
@@ -214,12 +222,9 @@ export default function Blogs() {
 
                 {/* Substantive Article container */}
                 <div className="p-6 sm:p-10 overflow-y-auto flex-1 select-text">
-                  <div className="flex items-center gap-4 text-xs font-mono text-slate-400 mb-4 select-none">
+                  <div className="mb-4 flex items-center gap-4 text-xs font-mono text-slate-400 select-none">
                     <span className="flex items-center gap-1">
                       <Calendar className="h-3.5 w-3.5 text-indigo-500" /> {selectedPost.date}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <Clock className="h-3.5 w-3.5 text-cyan-500" /> {selectedPost.readTime}
                     </span>
                   </div>
 
@@ -245,7 +250,7 @@ export default function Blogs() {
                 </div>
 
                 {/* Footer reading indicator bar */}
-                <div className="p-4 border-t border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 flex justify-end">
+                <div className="flex justify-end border-t border-white/10 bg-white/[0.03] p-4">
                   <button
                     id="read-modal-dismiss-btn"
                     onClick={() => setSelectedPost(null)}

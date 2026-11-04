@@ -12,20 +12,20 @@ export const resumeData: ResumeData = {
   instagram: "https://www.instagram.com/raukey_/",
   education: [
     {
-      degree: "B.Tech CS-AI",
-      institution: "GL Bajaj Institute of Technology and Management",
-      score: "CGPA: 7.23",
-      year: "2023 - 2027"
+      degree: "B.Tech CSE-AI",
+      institution: "G.L. Bajaj Institute of Technology and Management",
+      score: "CGPA 7.23/10",
+      year: "2023-2027"
     },
     {
-      degree: "Intermediate",
-      institution: "Saraswati senior secondary Vidya Mandir, Deoria khas, Deoria, UP",
+      degree: "Intermediate (12th)",
+      institution: "Saraswati Senior Secondary Vidya Mandir, Deoria Khas, Deoria, UP",
       score: "81.4%",
       year: "2022"
     },
     {
-      degree: "High School",
-      institution: "Saraswati senior secondary Vidya Mandir, Deoria khas, Deoria, UP",
+      degree: "High School (10th)",
+      institution: "Saraswati Senior Secondary Vidya Mandir, Deoria Khas, Deoria, UP",
       score: "84.8%",
       year: "2020"
     }
@@ -72,28 +72,42 @@ export const resumeData: ResumeData = {
   ],
   projects: [
     {
-      id: "corvina",
-      title: "CORVINA - Automated Email Response System",
-      subtitle: "Containerized Smart Email Processor",
-      github: "https://github.com/Raunak-Pandey/CORVINA",
-      description: [
-        "Built a containerized backend system to read incoming emails, detect intent using rule-based analysis, and dispatch automated responses reliably.",
-        "Implemented modular architecture with robust retry handling, structured logging, continuous deployment workflow, and SMTP/IMAP protocol debugging.",
-        "Optimized processing pipeline to operate inside light-weight containers with live status updates."
-      ],
-      tags: ["Python FastAPI", "Docker", "IMAP", "SMTP", "REST APIs", "Linux", "Render", "Git & GitHub", "Docker Hub"]
-    },
-    {
       id: "glassbox",
-      title: "GlassBox - System Observability Platform",
-      subtitle: "Multi-Container Monitoring & Metrics Hub",
+      title: "GlassBox",
+      subtitle: "Containerized observability and monitoring platform",
       github: "https://github.com/Raunak-Pandey/GlassBox",
       description: [
-        "Developed a multi-container observability platform integrating visualization tools to continuously track, alert, and analyze infrastructure and app performance.",
-        "Designed self-healing automated workflows for metrics collection, dashboard visualization with Prometheus queries (PromQL), and custom alertmanager configurations.",
-        "Applied site-reliability and DevOps best practices for real-time memory, CPU, and disk usage tracking."
+        "Developed a multi-container observability platform to track, alert on, and analyze infrastructure and application performance.",
+        "Configured Prometheus metrics, Grafana dashboards, and Alertmanager for system monitoring and alerting.",
+        "Applied DevOps practices to track resource usage and support reliable multi-container deployments."
       ],
-      tags: ["Docker", "Docker-compose", "Prometheus", "Grafana", "Linux", "Python", "System Logs", "CI/CD Setup", "AWS (EC2/ECR/S3)"]
+      tags: ["Docker", "Docker Compose", "Prometheus", "Grafana", "Alertmanager", "Python", "AWS EC2", "ECR", "S3"]
+    },
+    {
+      id: "corvina",
+      title: "CORVINA",
+      subtitle: "Automated email processing and response system",
+      github: "https://github.com/Raunak-Pandey/CORVINA",
+      description: [
+        "Built a containerized backend service that processes incoming email, detects intent, and dispatches automated responses.",
+        "Designed modular workflows with structured logging, retry handling, and SMTP/IMAP protocol integration.",
+        "Added API endpoints with FastAPI and automated delivery workflows."
+      ],
+      tags: ["Python", "FastAPI", "Docker", "IMAP", "SMTP", "REST APIs", "Linux", "GitHub Actions"]
+    },
+    {
+      id: "my-portfolio",
+      title: "Raunak.DevOps Portfolio",
+      subtitle: "Portfolio delivery with Docker, CI/CD, and AWS",
+      github: "https://github.com/Raunak08-code/Raunak-DevOps--portfolio",
+      live: "https://raunak-dev-ops-portfolio.vercel.app/",
+      docker: "https://hub.docker.com/repository/docker/raunak-devops--potfolio",
+      description: [
+        "Containerized and deployed this React portfolio as a production web application.",
+        "Automated Docker image builds and publishing with a GitHub Actions CI/CD pipeline.",
+        "Deployed on AWS EC2 behind an Nginx reverse proxy."
+      ],
+      tags: ["Docker", "Docker Hub", "GitHub Actions", "CI/CD", "AWS EC2", "Nginx", "Vite", "React"]
     },
     {
       id: "northstar",
@@ -101,6 +115,7 @@ export const resumeData: ResumeData = {
       subtitle: "Insights for Every Development Journey",
       github: "https://github.com/Raunak08-code",
       report: "/docs/northstar-report.pdf",
+      status: "In Development",
       description: [
         "NorthStar is an evolving DevOps analytics platform designed to bring development activity, build history, and engineering delivery insights into one place.",
         "Its long-term vision is to help developers and teams understand their development journey through actionable engineering metrics.",
@@ -109,19 +124,15 @@ export const resumeData: ResumeData = {
       tags: ["Go", "Python", "FastAPI", "PostgreSQL", "SQLAlchemy", "GitHub REST API", "Webhooks", "Docker"]
     },
     {
-      id: "my-portfolio",
-      title: "MY portfolio",
-      subtitle: "DevOps Portfolio Website • Raunak.DevOps",
-      github: "https://github.com/Raunak08-code/Raunak-DevOps--portfolio",
-      live: "https://raunak-dev-ops-portfolio.vercel.app/",
-      docker: "https://hub.docker.com/repository/docker/raunak-devops--potfolio",
+      id: "darr-studios",
+      title: "DARR STUDIOS",
+      subtitle: "Independent game development studio",
+      status: "In Development",
       description: [
-        "Took an existing web application and transformed it into a production-ready deployment.",
-        "Containerized the application using Docker and published images to Docker Hub.",
-        "Built CI/CD pipeline using GitHub Actions for automated image builds.",
-        "Deployed on AWS EC2 behind an Nginx reverse proxy."
+        "An early-stage independent game development studio focused on building original interactive experiences.",
+        "The studio is currently in development, with its identity, production workflow, and first game concepts taking shape."
       ],
-      tags: ["Docker", "Docker Hub", "GitHub Actions", "CI/CD", "AWS EC2", "Nginx", "Vite", "React"]
+      tags: ["Game Development", "Interactive Experiences"]
     }
   ],
   learningProgress: {

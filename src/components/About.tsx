@@ -1,164 +1,185 @@
-import React from "react";
-import { motion, type Variants } from "motion/react";
-import { User, BookOpen, CheckCircle2, Layers } from "lucide-react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { X } from "lucide-react";
+import Learning from "./Learning";
+import RoadAhead from "./RoadAhead";
+
+type AboutPanel = "learning" | "road-ahead" | null;
+
+const biography = [
+  <>
+    Hi, I'm <strong>Raunak Pandey</strong>, a Computer Science undergraduate
+    specializing in Artificial Intelligence at G.L. Bajaj Institute of
+    Technology and Management.
+  </>,
+  <>
+    My journey into technology began with software development and
+    problem-solving, but over time I found myself increasingly fascinated by
+    the systems that power modern applications behind the scenes. This curiosity
+    led me to explore DevOps, Cloud Computing, Automation, Observability, and
+    Infrastructure Engineering.
+  </>,
+  <>
+    What attracts me most to DevOps is the combination of software engineering
+    and operational excellence. I enjoy understanding how applications move
+    from development to production, how systems are monitored, and how
+    automation can improve reliability, scalability, and developer
+    productivity.
+  </>,
+  <>
+    To strengthen my practical skills, I actively build projects that simulate
+    real-world engineering environments. One of my key projects is{" "}
+    <strong>GlassBox</strong>, an observability and monitoring platform built
+    using Docker, Prometheus, Grafana, PostgreSQL, and Python. Through this
+    project, I gained hands-on experience with containerization, metrics
+    collection, visualization, monitoring pipelines, and multi-service
+    architectures.
+  </>,
+  <>
+    Another project, <strong>CORVINA</strong>, is an AI-powered email responder
+    that automates email processing and reply generation using Python and
+    FastAPI. Building this project helped me understand backend services, API
+    design, automation workflows, and system integration.
+  </>,
+];
+
+const offerings = [
+  {
+    title: "DevOps Practices",
+    description:
+      "I bring development and operations together through version control, reliable CI/CD pipelines, infrastructure monitoring, and continuous improvement—helping teams deliver software more consistently.",
+  },
+  {
+    title: "Containerization with Docker",
+    description:
+      "I build portable application environments with Docker and Docker Compose, and use Docker networks to let services communicate securely and predictably across multi-container setups.",
+  },
+  {
+    title: "Kubernetes Orchestration",
+    description:
+      "I use Kubernetes concepts to orchestrate containerized workloads, manage deployments and scaling, and improve application availability across clusters.",
+  },
+  {
+    title: "Cloud Infrastructure",
+    description:
+      "I work with cloud services across AWS, Azure, and other platforms, including compute such as EC2, object storage such as S3, networking, and managed services for scalable infrastructure.",
+  },
+  {
+    title: "Automation with IaC & Ansible",
+    description:
+      "I automate repeatable infrastructure setup with Infrastructure as Code and Ansible, making server configuration and environment provisioning more consistent and easier to maintain.",
+  },
+  {
+    title: "Problem Solving",
+    description:
+      "I have solved 120+ DSA problems on LeetCode and can write clean, structured code with attention to efficient algorithms and maintainability.",
+  },
+];
 
 export default function About() {
-  const learningFocus = [
-    { name: "Linux & System Administration", level: 90 },
-    { name: "Docker & Containerization", level: 85 },
-    { name: "Kubernetes", level: 70 },
-    { name: "CI/CD Pipelines", level: 80 },
-    { name: "GitHub Actions", level: 85 },
-    { name: "Cloud Computing (AWS)", level: 75 },
-    { name: "Infrastructure as Code", level: 70 },
-    { name: "Monitoring & Observability", level: 85 },
-    { name: "Automation with Python & Go", level: 80 }
-  ];
+  const [activePanel, setActivePanel] = useState<AboutPanel>(null);
+  const aboutScrollY = useRef(0);
+  const detailPageRef = useRef<HTMLDivElement>(null);
+  const hadActivePanel = useRef(false);
 
-  const fadeUpVariants: Variants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } }
-  };
+  useLayoutEffect(() => {
+    if (activePanel) {
+      detailPageRef.current?.scrollTo(0, aboutScrollY.current);
+      hadActivePanel.current = true;
+      return;
+    }
+
+    if (hadActivePanel.current) {
+      window.scrollTo(0, aboutScrollY.current);
+      hadActivePanel.current = false;
+    }
+  }, [activePanel]);
+
+  useEffect(() => {
+    if (!activePanel) return;
+
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setActivePanel(null);
+    };
+
+    window.addEventListener("keydown", closeOnEscape);
+    return () => window.removeEventListener("keydown", closeOnEscape);
+  }, [activePanel]);
+
+  if (activePanel) {
+    return (
+      <div
+        ref={detailPageRef}
+        className="about-detail-page portfolio-art portfolio-art-about"
+        role="dialog"
+        aria-modal="true"
+        aria-label={
+          activePanel === "learning" ? "Currently Learning" : "Road Ahead"
+        }
+      >
+        <button
+          type="button"
+          className="about-detail-close"
+          onClick={() => setActivePanel(null)}
+          aria-label="Close and return to About"
+        >
+          <X aria-hidden="true" />
+        </button>
+        {activePanel === "learning" ? <Learning /> : <RoadAhead />}
+      </div>
+    );
+  }
 
   return (
-    <section
-      id="about"
-      className="py-20 bg-[var(--ink-black)] border-b border-[var(--border-soft)] overflow-hidden relative"
-    >
-      <div className="absolute inset-0 pointer-events-none opacity-[0.02] dark:opacity-[0.05]">
-        <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-indigo-550 rounded-full blur-[120px] -translate-y-1/2" />
-        <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-cyan-400 rounded-full blur-[100px]" />
+    <section id="about" className="about-page portfolio-art portfolio-art-about">
+      <header className="about-heading">
+        <h1>About Me</h1>
+        <p>
+          Combining software engineering principles with operational excellence
+          to build reliable systems.
+        </p>
+      </header>
+
+      <div className="about-intro">
+        {biography.map((paragraph, index) => (
+          <p key={index}>{paragraph}</p>
+        ))}
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        {/* Section Heading */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/45 border border-indigo-100 dark:border-indigo-900/60 mb-3 animate-pulse">
-            <User className="h-3.5 w-3.5 text-indigo-600 dark:text-indigo-400" />
-            <span className="text-[10px] font-mono font-bold text-indigo-700 dark:text-indigo-300 uppercase tracking-widest">About Me Portfolio</span>
-          </div>
-          <h2 className="font-sans font-extrabold text-3xl sm:text-4xl text-slate-900 dark:text-slate-100 tracking-tight">
-            Professional Biography
-          </h2>
-          <p className="text-sm text-slate-500 dark:text-slate-400 max-w-xl mx-auto mt-2 text-center font-serif italic">
-            "Combining software engineering principles with operational excellence to build reliable systems."
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          
-          {/* Narrative Column */}
-          <div className="lg:col-span-7 space-y-6">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              variants={fadeUpVariants}
-              className="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-350 text-sm leading-relaxed space-y-4"
-            >
-              <p className="text-base sm:text-lg font-medium text-slate-900 dark:text-slate-200">
-                Hi, I'm <span className="font-bold text-indigo-600 dark:text-indigo-400">Raunak Pandey</span>, a Computer Science undergraduate specializing in Artificial Intelligence at G.L. Bajaj Institute of Technology and Management.
-              </p>
-
-              <p>
-                My journey into technology began with software development and problem-solving, but over time I found myself increasingly fascinated by the systems that power modern applications behind the scenes. This curiosity led me to explore DevOps, Cloud Computing, Automation, Observability, and Infrastructure Engineering.
-              </p>
-
-              <p>
-                What attracts me most to DevOps is the combination of software engineering and operational excellence. I enjoy understanding how applications move from development to production, how systems are monitored, and how automation can improve reliability, scalability, and developer productivity.
-              </p>
-
-              <p>
-                To strengthen my practical skills, I actively build projects that simulate real-world engineering environments. One of my key projects is <span className="font-semibold text-slate-900 dark:text-white">GlassBox</span>, an observability and monitoring platform built using Docker, Prometheus, Grafana, PostgreSQL, and Python. Through this project, I gained hands-on experience with containerization, metrics collection, visualization, monitoring pipelines, and multi-service architectures.
-              </p>
-
-              <p>
-                Another project, <span className="font-semibold text-slate-900 dark:text-white">CORVINA</span>, is an AI-powered email responder that automates email processing and reply generation using Python and FastAPI. Building this project helped me understand backend services, API design, automation workflows, and system integration.
-              </p>
-            </motion.div>
-          </div>
-
-          {/* Learning Focus Column */}
-          <div className="lg:col-span-5 space-y-6">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              variants={fadeUpVariants}
-              className="bg-[var(--charcoal)] rounded-3xl p-6 border border-[var(--border-soft)] shadow-sm"
-            >
-              <div className="flex items-center gap-2 mb-4 pb-2 border-b border-slate-200 dark:border-slate-850">
-                <BookOpen className="h-4 w-4 text-cyan-500" />
-                <h3 className="font-sans font-bold text-sm uppercase tracking-wide text-slate-850 dark:text-slate-200">
-                  Current Learning Focus
-                </h3>
-              </div>
-
-              <div className="space-y-3.5">
-                {learningFocus.map((item, idx) => (
-                  <div key={idx} className="space-y-1.5">
-                    <div className="flex items-center justify-between text-xs">
-                      <div className="flex items-center gap-2">
-                        <CheckCircle2 className="h-3.5 w-3.5 text-indigo-500 flex-shrink-0" />
-                        <span className="font-sans font-medium text-slate-750 dark:text-slate-350">{item.name}</span>
-                      </div>
-                      <span className="font-mono text-indigo-500 font-bold">{item.level}%</span>
-                    </div>
-                    {/* Visual Progress bar */}
-                    <div className="w-full bg-slate-200/70 dark:bg-slate-850 rounded-full h-1 overflow-hidden">
-                      <motion.div 
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${item.level}%` }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, ease: "easeOut", delay: idx * 0.05 }}
-                        className="bg-[var(--dusty-teal)] h-1 rounded-full" 
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Quick Profile Summary Stats Card */}
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              variants={fadeUpVariants}
-              className="bg-[var(--charcoal)] rounded-3xl p-6 border border-[var(--border-soft)] shadow-sm space-y-4"
-            >
-              <div className="flex items-center gap-2 pb-2 border-b border-slate-200 dark:border-slate-850">
-                <Layers className="h-4 w-4 text-emerald-500" />
-                <h3 className="font-sans font-bold text-sm uppercase tracking-wide text-slate-850 dark:text-slate-200">
-                  Infrastructure Metrics
-                </h3>
-              </div>
-
-              <div className="grid grid-cols-4 gap-3">
-                <div className="p-3 bg-white dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800 rounded-2xl text-center">
-                  <span className="text-xl font-bold font-mono text-indigo-600 dark:text-indigo-400 block">7.23</span>
-                  <span className="text-[8px] uppercase font-mono tracking-wider text-slate-450 block mt-1">CGPA</span>
-                </div>
-                <div className="p-3 bg-white dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800 rounded-2xl text-center">
-                  <span className="text-xl font-bold font-mono text-emerald-600 dark:text-emerald-400 block">100+</span>
-                  <span className="text-[8px] uppercase font-mono tracking-wider text-slate-450 block mt-1">DSA</span>
-                </div>
-                <div className="p-3 bg-white dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800 rounded-2xl text-center">
-                  <span className="text-xl font-bold font-mono text-cyan-600 dark:text-cyan-400 block">88%</span>
-                  <span className="text-[8px] uppercase font-mono tracking-wider text-slate-450 block mt-1">Commit</span>
-                </div>
-                <div className="p-3 bg-white dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800 rounded-2xl text-center">
-                  <span className="text-xl font-bold font-mono text-pink-600 dark:text-pink-400 block">4</span>
-                  <span className="text-[8px] uppercase font-mono tracking-wider text-slate-450 block mt-1">Labs</span>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-
-        </div>
-
+      <div className="about-card-grid">
+        <button
+          type="button"
+          className="about-action-card"
+          onClick={() => {
+            aboutScrollY.current = window.scrollY;
+            setActivePanel("learning");
+          }}
+        >
+          Currently Learning
+        </button>
+        <button
+          type="button"
+          className="about-action-card"
+          onClick={() => {
+            aboutScrollY.current = window.scrollY;
+            setActivePanel("road-ahead");
+          }}
+        >
+          Road Ahead
+        </button>
       </div>
+
+      <section className="about-offerings" aria-labelledby="about-offerings-title">
+        <h2 id="about-offerings-title">What I offer ~</h2>
+        <div className="about-offerings-grid">
+          {offerings.map((offering, index) => (
+            <article className="about-offering" key={offering.title}>
+              <span className="about-offering-number">0{index + 1}</span>
+              <h3>{offering.title}</h3>
+              <p>{offering.description}</p>
+            </article>
+          ))}
+        </div>
+      </section>
     </section>
   );
 }

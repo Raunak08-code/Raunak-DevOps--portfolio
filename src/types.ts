@@ -9,10 +9,11 @@ export interface ProjectItem {
   id: string;
   title: string;
   subtitle: string;
-  github: string;
+  github?: string;
   live?: string;
   docker?: string;
   report?: string;
+  status?: string;
   description: string[];
   tags: string[];
 }

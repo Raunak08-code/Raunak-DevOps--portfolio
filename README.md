@@ -1,26 +1,17 @@
-# Raunak DevOps Portfolio
+# Raunak Pandey
 
-> A personal portfolio platform showcasing my projects, technical journey, and DevOps engineering practices.
+> A six-page personal portfolio with a click-to-enter landing screen.
 
 ## Overview
 
-This project serves two purposes:
-
-1. Showcase my projects, skills, and professional profile.
-2. Demonstrate practical DevOps concepts including containerization, CI/CD automation, container registry integration, and deployment readiness.
-
-While the frontend was developed with AI-assisted tooling, the project was re-engineered and managed from a DevOps perspective, including Dockerization, GitHub Actions automation, Docker Hub publishing, documentation, and operational workflows.
+The landing screen presents “Hi, I'm Raunak Pandey” and opens the portfolio when clicked. The other pages cover About, Edu-Skill, Project, Blogs-extra, and Contact.
 
 ---
 
 ## Live Features
 
-* Responsive Portfolio Website
-* Interactive Terminal Experience
-* Project Showcase
-* Skills Dashboard
-* Contact Information
-* Blog Section
+* Click-to-enter landing page
+* About, education and skills, projects, blogs and extras, and contact pages
 
 ---
 

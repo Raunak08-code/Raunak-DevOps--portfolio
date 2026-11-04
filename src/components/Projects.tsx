@@ -1,343 +1,188 @@
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
-import { Github, FolderGit2, Cpu, BarChart2, CheckSquare, Code2, Copy, Check, Terminal, ExternalLink, FileText } from "lucide-react";
+import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { motion } from "motion/react";
+import type { ProjectItem } from "../types";
 import { resumeData } from "../data";
 
-export default function Projects() {
-  const [copiedCodeCode, setCopiedCodeCode] = useState(false);
-  const [activeCodeTab, setActiveCodeTab] = useState<"cpp" | "python">("cpp");
+function ProjectLinks({ project }: { project: ProjectItem }) {
+  const links = [
+    { label: "GitHub", href: project.github ?? resumeData.github },
+    { label: "Docker Hub", href: project.docker ?? resumeData.dockerHub },
+  ].filter((link) => link.href);
 
-  const cppDsaCode = `#include <iostream>
-#include <vector>
-#include <unordered_map>
-using namespace std;
+  if (project.live) links.push({ label: "Live Site", href: project.live });
+  if (project.report) links.push({ label: "Project Report", href: project.report });
 
-// Raunak's Optimized O(N) Sliding Window Algorithm
-class Solution {
-public:
-    int lengthOfLongestSubstring(string s) {
-        vector<int> charIdx(128, -1);
-        int maxLen = 0, left = 0;
-        
-        for (int right = 0; right < s.length(); ++right) {
-            if (charIdx[s[right]] >= left) {
-                left = charIdx[s[right]] + 1;
-            }
-            charIdx[s[right]] = right;
-            maxLen = max(maxLen, right - left + 1);
-        }
-        return maxLen;
-    }
-};
+  if (links.length === 0) return null;
 
-int main() {
-    ios_base::sync_with_stdio(false); // Raunak's Fast I/O Sync
-    cin.tie(NULL);
-    
-    Solution solver;
-    cout << "Longest unique substring: " << solver.lengthOfLongestSubstring("abcabcbb") << "\\n";
-    return 0;
-}`;
+  return (
+    <div className="flex flex-wrap gap-x-4 gap-y-2">
+      {links.map(({ label, href }) => (
+        <a
+          key={label}
+          href={href}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center gap-1 text-xs font-mono font-semibold text-[var(--cloud-white)]/75 transition-colors hover:text-[var(--dusty-teal)]"
+        >
+          {label}
+          <ArrowUpRight aria-hidden="true" className="h-3.5 w-3.5" />
+        </a>
+      ))}
+    </div>
+  );
+}
 
-  const pythonMockConfig = `# CORVINA Automated Email intent router.py
-import uvicorn
-from fastapi import FastAPI, BackgroundTasks
-from pydantic import BaseModel
+function ProjectDetail({ project }: { project: ProjectItem }) {
+  return (
+    <section className="project-detail-page portfolio-art portfolio-art-projects min-h-[calc(100vh-4rem)] bg-[var(--ink-black)] py-12 sm:py-16">
+      <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <a
+          href="#/project"
+          className="mb-10 inline-flex items-center gap-2 text-sm font-medium text-[var(--cloud-white)]/70 transition-colors hover:text-[var(--cloud-white)]"
+        >
+          <ArrowLeft aria-hidden="true" className="h-4 w-4" />
+          Back to Projects
+        </a>
 
-app = FastAPI(title="CORVINA Email Automation Engine")
+        <header className="border-b border-[var(--border-soft)] pb-8">
+          <div className="flex flex-wrap items-center gap-3">
+            <h1 className="font-sans text-3xl font-extrabold tracking-tight text-[var(--cloud-white)] sm:text-5xl">
+              {project.title}
+            </h1>
+            {project.status && (
+              <span className="rounded-full bg-red-600/90 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-white">
+                {project.status}
+              </span>
+            )}
+          </div>
+          <p className="mt-4 font-mono text-sm text-[var(--cloud-white)]/65 sm:text-base">
+            {project.subtitle}
+          </p>
+        </header>
 
-class IncomingEmail(BaseModel):
-    subject: str
-    body: str
-    sender: str
+        <div className="grid gap-10 py-8 md:grid-cols-[minmax(0,1.5fr)_minmax(14rem,0.8fr)]">
+          <section aria-labelledby="project-overview-title">
+            <h2
+              id="project-overview-title"
+              className="mb-5 font-sans text-xl font-bold text-[var(--cloud-white)]"
+            >
+              Project Details
+            </h2>
+            <div className="space-y-4 text-sm leading-7 text-[var(--cloud-white)]/78">
+              {project.description.map((detail) => (
+                <p key={detail}>{detail}</p>
+              ))}
+            </div>
+          </section>
 
-@app.post("/api/v1/emails/process")
-async def process_incoming_email(email: IncomingEmail, tasks: BackgroundTasks):
-    # Log intent detection asynchronously
-    print(f"[CORVINA] Scraping message from: {email.sender}")
-    intent = "billing_query" if "refund" in email.body else "general"
-    return {"status": "intent_matched", "category": intent, "retry_attempts": 0}
-`;
+          <section aria-labelledby="project-tech-title">
+            <h2
+              id="project-tech-title"
+              className="mb-5 font-sans text-xl font-bold text-[var(--cloud-white)]"
+            >
+              Tech Stack
+            </h2>
+            <ul className="flex flex-wrap gap-2">
+              {project.tags.map((tag) => (
+                <li
+                  key={tag}
+                  className="border border-[var(--border-soft)] px-3 py-1.5 font-mono text-xs text-[var(--cloud-white)]/75"
+                >
+                  {tag}
+                </li>
+              ))}
+            </ul>
+          </section>
+        </div>
 
-  const copyToClipboard = (text: string) => {
-    navigator.clipboard.writeText(text);
-    setCopiedCodeCode(true);
-    setTimeout(() => setCopiedCodeCode(false), 2000);
-  };
+        <section
+          aria-labelledby="project-links-title"
+          className="border-t border-[var(--border-soft)] pt-6"
+        >
+          <h2
+            id="project-links-title"
+            className="mb-4 font-sans text-lg font-bold text-[var(--cloud-white)]"
+          >
+            Project Links
+          </h2>
+          <ProjectLinks project={project} />
+        </section>
+      </div>
+    </section>
+  );
+}
+
+export default function Projects({ projectId }: { projectId?: string }) {
+  if (projectId) {
+    const project = resumeData.projects.find(({ id }) => id === projectId);
+    if (project) return <ProjectDetail project={project} />;
+  }
 
   return (
     <section
       id="projects"
-      className="py-20 bg-[var(--ink-black)] transition-colors duration-500 border-b border-[var(--border-soft)]"
+      className="portfolio-art portfolio-art-projects border-b border-[var(--border-soft)] bg-[var(--ink-black)] py-16 sm:py-20"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Heading */}
-        <div className="text-center mb-16">
-          <h2 className="font-sans font-extrabold text-3xl sm:text-4xl text-slate-900 dark:text-slate-100 uppercase tracking-tight">
-            Automation & Engineering
-          </h2>
-          <div className="mt-2 h-1 w-16 bg-gradient-to-r from-indigo-500 to-cyan-500 mx-auto rounded-full" />
-          <p className="text-sm text-slate-500 dark:text-slate-400 mt-3 font-mono">
-            Showcasing live containerized configurations and continuous systems
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <header className="mb-10">
+          <h1 className="text-left font-sans text-3xl font-extrabold uppercase tracking-tight text-[var(--cloud-white)] sm:text-4xl">
+            Projects
+          </h1>
+          <p className="mt-3 max-w-3xl font-mono text-sm leading-relaxed text-[var(--cloud-white)]/70">
+            Engineering work spanning observability, email automation,
+            production delivery, and game development.
           </p>
-        </div>
+        </header>
 
-        {/* Projects Listing Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-6xl mx-auto mb-16">
-          {resumeData.projects.map((proj) => (
-            <motion.div
-              key={proj.id}
-              id={`project-card-${proj.id}`}
-              initial={{ opacity: 0, y: 30 }}
+        <div className="grid grid-cols-1 md:grid-cols-3">
+          {resumeData.projects.map((project, index) => (
+            <motion.article
+              key={project.id}
+              id={`project-card-${project.id}`}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.5 }}
-              className="bg-[var(--charcoal)] border border-[var(--border-soft)] rounded-3xl p-6 md:p-8 flex flex-col justify-between hover:shadow-lg hover:border-[var(--border-soft)] transition-all relative group"
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.35 }}
+              className={`flex min-w-0 flex-col px-5 py-7 sm:px-7 ${
+                index % 3 !== 2
+                  ? "md:border-r md:border-[var(--border-soft)]"
+                  : ""
+              } ${index < 3 ? "md:border-b md:border-[var(--border-soft)]" : ""} ${
+                index % 3 === 0 ? "md:pl-0" : ""
+              } ${index % 3 === 2 ? "md:pr-0" : ""}`}
             >
-              <div>
-                {/* Meta details header info */}
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-2">
-                    <div className="h-10 w-10 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
-                      {proj.id === "corvina" ? <Cpu className="h-5 w-5" /> : <BarChart2 className="h-5 w-5" />}
-                    </div>
-                    <div>
-                      <span className="text-[10px] uppercase font-mono tracking-widest text-slate-500 block">CONTAINERIZED APP</span>
-                      <span className="text-xs font-mono font-bold text-slate-400 dark:text-slate-500">Node runtime</span>
-                    </div>
-                  </div>
-                  
-                  {/* Project external links: GitHub, Live, Docker Hub (when available) */}
-                  <div className="flex items-center gap-2">
-                    {proj.report && (
-                      <a
-                        id={`project-report-link-${proj.id}`}
-                        href={proj.report}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="p-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:scale-105 transition-all cursor-pointer shadow-sm"
-                        title="View Full Report"
-                      >
-                        <FileText className="h-4 w-4" />
-                      </a>
-                    )}
-
-                    {proj.github && (
-                      <a
-                        id={`project-github-link-${proj.id}`}
-                        href={proj.github}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="p-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:scale-105 transition-all cursor-pointer shadow-sm"
-                        title="View Source on GitHub"
-                      >
-                        <Github className="h-4 w-4" />
-                      </a>
-                    )}
-
-                    {proj.live && (
-                      <a
-                        id={`project-live-link-${proj.id}`}
-                        href={proj.live}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="p-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:scale-105 transition-all cursor-pointer shadow-sm"
-                        title="View Live Site"
-                      >
-                        <ExternalLink className="h-4 w-4" />
-                      </a>
-                    )}
-
-                    {proj.docker && (
-                      <a
-                        id={`project-docker-link-${proj.id}`}
-                        href={proj.docker}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="p-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:scale-105 transition-all cursor-pointer shadow-sm"
-                        title="View on Docker Hub"
-                      >
-                        <FolderGit2 className="h-4 w-4" />
-                      </a>
-                    )}
-                  </div>
+              <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
+                <div className="min-w-0">
+                  <h2 className="font-sans text-lg font-bold text-[var(--cloud-white)] sm:text-xl">
+                    {project.title}
+                  </h2>
+                  <p className="mt-1 text-xs leading-relaxed text-[var(--cloud-white)]/60">
+                    {project.subtitle}
+                  </p>
                 </div>
-
-                <h3 className="font-sans font-extrabold text-xl sm:text-2xl text-slate-900 dark:text-slate-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-                  {proj.title}
-                </h3>
-                <p className="font-mono text-xs text-indigo-600 dark:text-indigo-400 font-semibold mb-2 italic">
-                  {proj.subtitle}
-                </p>
-                {proj.id === "northstar" && (
-                  <div className="mb-5 flex flex-wrap gap-2">
-                    <span className="rounded-full border border-[rgba(124,156,158,0.35)] bg-red-500 px-2.5 py-1 text-[10px] font-mono font-bold uppercase tracking-[0.18em] text-slate-700 dark:text-slate-300">
-                      In Development
-                    </span>
-                    <span className="rounded-full border border-indigo-200/70 bg-indigo-50 dark:border-indigo-900/50 dark:bg-indigo-950/40 px-2.5 py-1 text-[10px] font-mono font-bold uppercase tracking-[0.18em] text-indigo-700 dark:text-indigo-300">
-                      DevOps Analytics / Internal Developer Platform
-                    </span>
-                  </div>
-                )}
-
-                {/* Bullet details extracted from PDF resume verbatim */}
-                <ul className="space-y-3 mb-8">
-                  {proj.description.map((bullet, bidx) => (
-                    <li key={bidx} className="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-350 leading-relaxed">
-                      <CheckSquare className="h-4 w-4 text-emerald-500 flex-shrink-0 mt-0.5" />
-                      <span>{bullet}</span>
-                    </li>
-                  ))}
-                </ul>
+                <ProjectLinks project={project} />
               </div>
 
-              {/* Technologies Badge elements */}
-              <div>
-                {proj.id === "northstar" && (
-                  <div className="mt-6 flex flex-col sm:flex-row gap-3">
-                    <a
-                      href={proj.report || "/docs/northstar-report.pdf"}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center justify-center rounded-xl border border-[var(--border-soft)] bg-[rgba(52,59,85,0.2)] px-4 py-2.5 text-xs font-mono font-bold uppercase tracking-[0.14em] text-[var(--cloud-white)] transition-colors hover:bg-[rgba(52,59,85,0.35)]"
-                    >
-                      View Full Report
-                    </a>
-                    <a
-                      href={proj.github}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center justify-center rounded-xl border border-[var(--border-soft)] bg-white/5 px-4 py-2.5 text-xs font-mono font-bold uppercase tracking-[0.14em] text-[var(--cloud-white)] transition-colors hover:bg-white/10"
-                    >
-                      GitHub Repository
-                    </a>
-                  </div>
-                )}
+              {project.status && (
+                <span className="mt-4 w-fit rounded-full bg-red-600/90 px-2.5 py-1 font-mono text-[9px] font-bold uppercase tracking-[0.14em] text-white">
+                  {project.status}
+                </span>
+              )}
 
-                <div className="flex flex-wrap gap-1.5 pt-4 border-t border-slate-200/50 dark:border-slate-800/80 mt-6">
-                  {proj.tags.map((tag, tidx) => (
-                    <span
-                      key={tidx}
-                      className="text-[10px] sm:text-xs font-mono bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400 border border-slate-200/60 dark:border-slate-800/60 px-2.5 py-1 rounded-lg"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* DSA & PROBLEM SOLVING INTEGRATED GRID */}
-        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch pt-8 border-t border-slate-1050 dark:border-slate-800/50">
-          {/* Summary / Stats Card */}
-          <div className="lg:col-span-5 bg-[var(--charcoal)] border border-[var(--border-soft)] rounded-3xl p-6 md:p-8 flex flex-col justify-between">
-            <div>
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-50 dark:bg-cyan-950/20 border border-cyan-100 dark:border-cyan-900/40 mb-4">
-                <Code2 className="h-3.5 w-3.5 text-cyan-600 dark:text-cyan-400" />
-                <span className="text-[10px] font-mono font-bold text-cyan-700 dark:text-cyan-400 uppercase">Interactive DSA Metrics</span>
-              </div>
-              
-              <h3 className="font-sans font-extrabold text-2xl text-slate-900 dark:text-slate-100">
-                Problem Solving
-              </h3>
-              <p className="text-xs text-slate-500 dark:text-slate-400 font-mono mt-1 mb-6">
-                Verifying logic benchmarks on LeetCode
+              <hr className="my-5 w-12 border-0 border-t border-[var(--cloud-white)]/45" />
+              <p className="line-clamp-3 text-sm leading-6 text-[var(--cloud-white)]/75">
+                {project.description[0]}
               </p>
 
-              {/* Verified Leetcode Score Panel */}
-              <div className="flex items-center gap-4 bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-200/60 dark:border-slate-850 shadow-sm mb-6">
-                <div className="h-12 w-12 rounded-xl bg-amber-50 dark:bg-amber-950/30 flex items-center justify-center text-amber-500 font-bold text-xl font-mono border border-amber-200/10">
-                  100+
-                </div>
-                <div>
-                  <span className="text-xs text-slate-400 block font-mono">RESOLVED SCRIPTS</span>
-                  <span className="text-xs font-sans font-bold text-slate-700 dark:text-slate-350">
-                    Strong focus on optimized space/time O(N) complexity operations.
-                  </span>
-                </div>
-              </div>
-
-              <ul className="space-y-2.5">
-                {resumeData.problemSolvingDetails.description.map((point, idx) => (
-                  <li key={idx} className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-normal flex items-start gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-505 block-inline mt-1.5 flex-shrink-0" />
-                    <span>{point}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="pt-6 border-t border-slate-200/50 dark:border-slate-800/80 mt-6 md:mt-0">
-              <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 block mb-2 font-bold">Algorithms Practiced:</span>
-              <div className="flex flex-wrap gap-1.5">
-                {resumeData.problemSolvingDetails.skillsTouched.map((item, idx) => (
-                  <span key={idx} className="text-[10px] font-mono bg-white dark:bg-slate-900 text-slate-500 border border-slate-200/60 dark:border-slate-800/60 px-2 py-0.5 rounded">
-                    {item}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Code Playgrounds panel */}
-          <div className="lg:col-span-7 bg-slate-950 border border-slate-850 rounded-3xl overflow-hidden flex flex-col justify-between min-h-[380px]">
-            {/* Playgrounds Header Tab toggles */}
-            <div className="p-3 bg-slate-900 border-b border-slate-850/80 flex items-center justify-between">
-              <div className="flex items-center gap-1">
-                <Terminal className="h-3.5 w-3.5 text-indigo-400" />
-                <span className="text-[11px] font-mono text-slate-400 uppercase tracking-widest font-bold">raunaks_sandbox_preview</span>
-              </div>
-              
-              <div className="flex gap-1.5">
-                <button
-                  id="sandbox-tab-cpp"
-                  onClick={() => setActiveCodeTab("cpp")}
-                  className={`text-[10px] font-mono px-2.5 py-1 rounded transition-all cursor-pointer ${
-                    activeCodeTab === "cpp"
-                      ? "bg-slate-800 text-white font-bold"
-                      : "text-slate-500 hover:text-slate-350"
-                  }`}
-                >
-                  longest_substring.cpp
-                </button>
-                <button
-                  id="sandbox-tab-python"
-                  onClick={() => setActiveCodeTab("python")}
-                  className={`text-[10px] font-mono px-2.5 py-1 rounded transition-all cursor-pointer ${
-                    activeCodeTab === "python"
-                      ? "bg-slate-800 text-white font-bold"
-                      : "text-slate-500 hover:text-slate-350"
-                  }`}
-                >
-                  corvina_router.py
-                </button>
-              </div>
-            </div>
-
-            {/* Simulated Active Code display with copy capability */}
-            <div className="flex-1 p-4 overflow-auto font-mono text-xs text-slate-300 relative bg-slate-950 scrollbar-none max-h-[380px]">
-              <button
-                id="copy-sandbox-code-btn"
-                onClick={() => copyToClipboard(activeCodeTab === "cpp" ? cppDsaCode : pythonMockConfig)}
-                className="absolute right-4 top-4 p-2 bg-slate-900 border border-slate-800 hover:bg-slate-800 text-slate-450 hover:text-white rounded-lg transition-all cursor-pointer shadow"
-                title="Copy Code to Clipboard"
+              <a
+                href={`#/project/${project.id}`}
+                className="mt-5 inline-flex w-fit items-center gap-2 text-sm font-semibold text-[var(--cloud-white)] transition-colors hover:text-[var(--dusty-teal)]"
               >
-                {copiedCodeCode ? <Check className="h-4 w-4 text-emerald-400" /> : <Copy className="h-4 w-4" />}
-              </button>
-
-              <pre className="text-[10px] leading-normal font-mono select-text pr-10">
-                {activeCodeTab === "cpp" ? cppDsaCode : pythonMockConfig}
-              </pre>
-            </div>
-
-            {/* Console output segment indicator */}
-            <div className="p-3 bg-slate-950 border-t border-slate-900 font-mono text-[10px] text-slate-550 flex items-center justify-between">
-              <span>Execution State: COMPILED SECURELY</span>
-              <span className="text-emerald-500 font-bold">✔ READY TO BUILD ON CPU LAYER</span>
-            </div>
-          </div>
+                Read more
+                <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
+              </a>
+            </motion.article>
+          ))}
         </div>
       </div>
     </section>

@@ -1,6 +1,6 @@
 import React from "react";
 import { motion, type Variants } from "motion/react";
-import { Github, Linkedin, Mail, ArrowRight, Server, Terminal as TermIcon, FileText, Sparkles, Instagram } from "lucide-react";
+import { Link, Mail, ArrowRight, Server, Terminal as TermIcon, FileText, Sparkles } from "lucide-react";
 import { resumeData } from "../data";
 
 interface HeroProps {
@@ -130,7 +130,7 @@ export default function Hero({ onDownloadResume }: HeroProps) {
                   rel="noreferrer"
                   className="p-2 bg-white dark:bg-slate-900 rounded-lg hover:text-indigo-600 dark:hover:text-indigo-400 border border-slate-250/20 transition-all text-xs flex items-center justify-center gap-1 shadow-sm"
                 >
-                  <Github className="h-4 w-4" /> GitHub
+                  <Link className="h-4 w-4" /> GitHub
                 </a>
                 <a
                   id="hero-linkedin-link"
@@ -139,7 +139,7 @@ export default function Hero({ onDownloadResume }: HeroProps) {
                   rel="noreferrer"
                   className="p-2 bg-white dark:bg-slate-900 rounded-lg hover:text-indigo-600 dark:hover:text-indigo-400 border border-slate-250/20 transition-all text-xs flex items-center justify-center gap-1 shadow-sm"
                 >
-                  <Linkedin className="h-4 w-4" /> LinkedIn
+                  <Link className="h-4 w-4" /> LinkedIn
                 </a>
                 {resumeData.instagram && (
                   <a
@@ -149,7 +149,7 @@ export default function Hero({ onDownloadResume }: HeroProps) {
                     rel="noreferrer"
                     className="p-2 bg-white dark:bg-slate-900 rounded-lg hover:text-indigo-600 dark:hover:text-indigo-400 border border-slate-250/20 transition-all text-xs flex items-center justify-center gap-1 shadow-sm"
                   >
-                    <Instagram className="h-4 w-4" /> Instagram
+                    <Link className="h-4 w-4" /> Instagram
                   </a>
                 )}
               </div>

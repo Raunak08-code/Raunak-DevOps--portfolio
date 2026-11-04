@@ -224,10 +224,12 @@ export default function FloatingDownload({ theme }: FloatingDownloadProps) {
         doc.setTextColor(textColor[0], textColor[1], textColor[2]);
         doc.text(proj.title, margin, y);
 
-        doc.setFont("helvetica", "normal");
-        doc.setFontSize(8);
-        doc.setTextColor(accentColor[0], accentColor[1], accentColor[2]);
-        doc.text(`GitHub: ${proj.github.replace("https://", "")}`, pageWidth - margin, y, { align: "right" });
+        if (proj.github) {
+          doc.setFont("helvetica", "normal");
+          doc.setFontSize(8);
+          doc.setTextColor(accentColor[0], accentColor[1], accentColor[2]);
+          doc.text(`GitHub: ${proj.github.replace("https://", "")}`, pageWidth - margin, y, { align: "right" });
+        }
         y += 4;
 
         doc.setFont("helvetica", "normal");
