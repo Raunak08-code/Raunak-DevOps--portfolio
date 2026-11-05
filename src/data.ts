@@ -2,8 +2,6 @@ import { ResumeData, BlogPost } from "./types";
 
 export const resumeData: ResumeData = {
   name: "Raunak Pandey",
-  role: "Aspiring DevOps Engineer",
-  location: "Greater Noida, India",
   phone: "+91 8303609789",
   email: "panditraunak.143@gmail.com",
   linkedin: "https://www.linkedin.com/in/raunak-pandey-1801202a0/",
@@ -28,46 +26,6 @@ export const resumeData: ResumeData = {
       institution: "Saraswati Senior Secondary Vidya Mandir, Deoria Khas, Deoria, UP",
       score: "84.8%",
       year: "2020"
-    }
-  ],
-  skills: [
-    {
-      category: "Programming Languages",
-      skills: [
-        { name: "C++", proficiency: 85 },
-        { name: "Python", proficiency: 80 },
-        { name: "Golang", proficiency: 70 }
-      ]
-    },
-    {
-      category: "Cloud & DevOps",
-      skills: [
-        { name: "Linux (Ubuntu)", proficiency: 90 },
-        { name: "Docker & Compose", proficiency: 85 },
-        { name: "Prometheus & Grafana", proficiency: 80 },
-        { name: "Git & GitHub", proficiency: 85 },
-        { name: "GitHub Actions", proficiency: 75 }
-      ]
-    },
-    {
-      category: "Core Concepts",
-      skills: [
-        { name: "Data Structures & Algorithms", proficiency: 85 },
-        { name: "Object Oriented Programming (OOP)", proficiency: 80 },
-        { name: "Operating Systems", proficiency: 75 },
-        { name: "Computer Networks", proficiency: 75 },
-        { name: "Database Management System", proficiency: 80 }
-      ]
-    },
-    {
-      category: "Developer Tools & Principles",
-      skills: [
-        { name: "CI / CD Pipelines", proficiency: 80 },
-        { name: "System Monitoring", proficiency: 80 },
-        { name: "Scripting & Automation", proficiency: 75 },
-        { name: "JSON & YAML", proficiency: 90 },
-        { name: "JIRA", proficiency: 70 }
-      ]
     }
   ],
   projects: [
@@ -160,14 +118,6 @@ export const resumeData: ResumeData = {
         link: "https://learn.microsoft.com/en-gb/training/modules/deliver-with-devops/"
       }
     ]
-  },
-  problemSolvingDetails: {
-    description: [
-      "Solved 100+ complex DSA problems on Leetcode utilizing C++ with focus on runtime and memory space complexity optimization.",
-      "Thorough understanding of low-level memory layouts, pointers, custom containers, and standard template library (STL)."
-    ],
-    leetcodeMockSolved: 112,
-    skillsTouched: ["C++ STL", "Time Complexity O(N log N)", "Dynamic Programming", "Recursion", "Memory Safety"]
   },
   certificationsList: [
     "DevOps Workshop Certification- CloudDevOpsHub (2025) - Hands-On Docker, CI/CD fundamentals, and cloud deployment concepts.",

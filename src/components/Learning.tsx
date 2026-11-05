@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "motion/react";
 import { ArrowUpRight, BookOpen, CheckCircle2, ExternalLink } from "lucide-react";
 

@@ -12,33 +12,28 @@ const biography = [
     Technology and Management.
   </>,
   <>
-    My journey into technology began with software development and
-    problem-solving, but over time I found myself increasingly fascinated by
-    the systems that power modern applications behind the scenes. This curiosity
-    led me to explore DevOps, Cloud Computing, Automation, Observability, and
-    Infrastructure Engineering.
+    I'm passionate about <strong>Cloud Computing, DevOps, Platform Engineering,
+    and Cloud Gaming</strong> — exploring how scalable infrastructure,
+    automation, and software engineering come together to power modern
+    applications and immersive digital experiences.
   </>,
   <>
-    What attracts me most to DevOps is the combination of software engineering
-    and operational excellence. I enjoy understanding how applications move
-    from development to production, how systems are monitored, and how
-    automation can improve reliability, scalability, and developer
-    productivity.
+    Through projects like <strong>NorthStar</strong>, my vision for a
+    developer-centric platform focused on DevOps analytics and engineering
+    insights, and <strong>DARR STUDIOS</strong>, my aspiring game development
+    studio, I aim to bridge the worlds of infrastructure engineering and game
+    development.
   </>,
   <>
-    To strengthen my practical skills, I actively build projects that simulate
-    real-world engineering environments. One of my key projects is{" "}
-    <strong>GlassBox</strong>, an observability and monitoring platform built
-    using Docker, Prometheus, Grafana, PostgreSQL, and Python. Through this
-    project, I gained hands-on experience with containerization, metrics
-    collection, visualization, monitoring pipelines, and multi-service
-    architectures.
+    I enjoy building, experimenting, and understanding systems from the ground
+    up — whether it's automating deployments, designing observable systems, or
+    exploring the infrastructure behind multiplayer and cloud-powered gaming.
   </>,
   <>
-    Another project, <strong>CORVINA</strong>, is an AI-powered email responder
-    that automates email processing and reply generation using Python and
-    FastAPI. Building this project helped me understand backend services, API
-    design, automation workflows, and system integration.
+    My long-term vision is to become a <strong>Cloud &amp; Platform
+    Engineer</strong> while contributing to the evolution of cloud gaming and
+    building technology that makes digital experiences more reliable, scalable,
+    and accessible.
   </>,
 ];
 
@@ -89,7 +84,12 @@ export default function About() {
     }
 
     if (hadActivePanel.current) {
-      window.scrollTo(0, aboutScrollY.current);
+      const scrollContainer = document.getElementById("app-content");
+      if (scrollContainer) {
+        scrollContainer.scrollTop = aboutScrollY.current;
+      } else {
+        window.scrollTo(0, aboutScrollY.current);
+      }
       hadActivePanel.current = false;
     }
   }, [activePanel]);
@@ -134,8 +134,8 @@ export default function About() {
       <header className="about-heading">
         <h1>About Me</h1>
         <p>
-          Combining software engineering principles with operational excellence
-          to build reliable systems.
+          <strong>Building reliable infrastructure. Engineering intelligent
+          platforms. Exploring the future of cloud gaming.</strong>
         </p>
       </header>
 
@@ -150,7 +150,9 @@ export default function About() {
           type="button"
           className="about-action-card"
           onClick={() => {
-            aboutScrollY.current = window.scrollY;
+            aboutScrollY.current =
+              document.getElementById("app-content")?.scrollTop ??
+              window.scrollY;
             setActivePanel("learning");
           }}
         >
@@ -160,7 +162,9 @@ export default function About() {
           type="button"
           className="about-action-card"
           onClick={() => {
-            aboutScrollY.current = window.scrollY;
+            aboutScrollY.current =
+              document.getElementById("app-content")?.scrollTop ??
+              window.scrollY;
             setActivePanel("road-ahead");
           }}
         >

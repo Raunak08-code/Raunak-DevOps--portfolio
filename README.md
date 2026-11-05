@@ -1,17 +1,17 @@
 # Raunak Pandey
 
-> A six-page personal portfolio with a click-to-enter landing screen.
+> A responsive personal portfolio with a click-to-enter landing screen.
 
 ## Overview
 
-The landing screen presents “Hi, I'm Raunak Pandey” and opens the portfolio when clicked. The other pages cover About, Edu-Skill, Project, Blogs-extra, and Contact.
+The responsive landing screen opens the portfolio when clicked. The portfolio includes About, Education and Skills, Projects, Blogs and activities, and Contact sections.
 
 ---
 
 ## Live Features
 
-* Click-to-enter landing page
-* About, education and skills, projects, blogs and extras, and contact pages
+* Responsive desktop and mobile landing artwork
+* About, education and skills, projects, blogs and activities, and contact sections
 
 ---
 
@@ -73,9 +73,17 @@ Docker images are automatically published to Docker Hub after successful pipelin
 ```text
 Raunak-DevOps--portfolio/
 │
-├── src/
 ├── public/
-├── docs/
+│   ├── docs/
+│   ├── landing-neon.jpeg
+│   ├── landing-mobile-ver.jpeg
+│   └── signature.webp
+├── src/
+│   ├── components/
+│   ├── App.tsx
+│   ├── data.ts
+│   ├── types.ts
+│   └── index.css
 ├── .github/
 │   └── workflows/
 │       ├── ci.yml

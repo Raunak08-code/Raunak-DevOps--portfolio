@@ -20,7 +20,7 @@ export default function Navbar({ activePage }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed inset-x-0 top-0 z-50 border-b border-[var(--border-soft)] bg-[rgba(9,11,14,0.98)] shadow-lg shadow-black/30 backdrop-blur-md">
+    <nav className="fixed inset-x-0 top-0 z-50 bg-transparent">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <a
           href="#/"
@@ -28,37 +28,37 @@ export default function Navbar({ activePage }: NavbarProps) {
           aria-label="Raunak Pandey home"
         >
           <img
-            src="/raunak-logo.png"
+            src="/R.png"
             alt=""
-            className="h-10 w-10 shrink-0 rounded-lg bg-white object-cover shadow-sm ring-1 ring-white/20 sm:h-11 sm:w-11"
+            className="h-10 w-10 shrink-0 rounded-lg bg-white object-contain p-0.5 sm:h-11 sm:w-11"
           />
           <span className="whitespace-nowrap font-sans text-xs font-bold tracking-tight text-[var(--cloud-white)] sm:text-lg">
-            RAUNAK<span className="text-[var(--grey-blue)]"> PANDEY</span>
+            <i> RAUNAK</i>
           </span>
         </a>
 
-        <div className="ml-auto hidden items-center gap-5 md:flex">
-          {navItems.map((item) => (
-            <a
-              key={item.id}
-              href={item.href}
-              aria-current={activePage === item.id ? "page" : undefined}
-              className={`border-b-2 py-2 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--dusty-teal)] ${
-                activePage === item.id
-                  ? "border-[var(--dusty-teal)] text-[var(--cloud-white)]"
-                  : "border-transparent text-[var(--cloud-white)]/80 hover:border-[var(--grey-blue)] hover:text-[var(--cloud-white)]"
-              }`}
-            >
-              {item.label}
-            </a>
-          ))}
-        </div>
+        <div className="relative ml-auto">
+          <div className="hidden items-center gap-1 rounded-full border border-white/30 bg-white/5 p-1.5 backdrop-blur-md md:flex">
+            {navItems.map((item) => (
+              <a
+                key={item.id}
+                href={item.href}
+                aria-current={activePage === item.id ? "page" : undefined}
+                className={`rounded-full px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--dusty-teal)] ${
+                  activePage === item.id
+                    ? "bg-white/15 text-[var(--cloud-white)]"
+                    : "text-[var(--cloud-white)]/85 hover:bg-white/10 hover:text-[var(--cloud-white)]"
+                }`}
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
 
-        <div className="ml-auto flex items-center gap-2 md:ml-0">
           <button
             type="button"
             onClick={() => setIsOpen((open) => !open)}
-            className="cursor-pointer rounded-lg p-2 text-[var(--cloud-white)] transition-colors hover:bg-[rgba(124,156,158,0.18)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--dusty-teal)] md:hidden"
+            className="cursor-pointer rounded-full border border-white/30 bg-white/5 p-2.5 text-[var(--cloud-white)] backdrop-blur-md transition-colors hover:bg-white/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--dusty-teal)] md:hidden"
             aria-label={isOpen ? "Close menu" : "Open menu"}
             aria-expanded={isOpen}
           >
@@ -73,19 +73,19 @@ export default function Navbar({ activePage }: NavbarProps) {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="border-t border-[var(--border-soft)] bg-[rgba(9,11,14,0.99)] shadow-lg shadow-black/30 md:hidden"
+            className="absolute right-4 top-[calc(100%+0.5rem)] w-56 rounded-2xl border border-white/20 bg-[rgba(6,11,26,0.88)] p-2 shadow-lg shadow-black/30 backdrop-blur-xl md:hidden"
           >
-            <div className="space-y-1 px-4 py-3">
+            <div className="space-y-1">
               {navItems.map((item) => (
                 <a
                   key={item.id}
                   href={item.href}
                   onClick={() => setIsOpen(false)}
                   aria-current={activePage === item.id ? "page" : undefined}
-                  className={`block rounded-lg border-l-2 px-3 py-2.5 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--dusty-teal)] ${
+                  className={`block rounded-xl px-3 py-2.5 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--dusty-teal)] ${
                     activePage === item.id
-                      ? "border-[var(--dusty-teal)] bg-[rgba(124,156,158,0.18)] text-[var(--cloud-white)]"
-                      : "border-transparent text-[var(--cloud-white)] hover:bg-[rgba(124,156,158,0.12)]"
+                      ? "bg-white/15 text-[var(--cloud-white)]"
+                      : "text-[var(--cloud-white)] hover:bg-white/10"
                   }`}
                 >
                   {item.label}

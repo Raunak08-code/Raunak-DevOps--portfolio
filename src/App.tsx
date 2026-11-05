@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useState } from "react";
 import { Analytics } from "@vercel/analytics/react";
-import { Award, Code2 } from "lucide-react";
+import { ArrowUp, Award, Code2 } from "lucide-react";
 import About from "./components/About";
 import Blogs from "./components/Blogs";
 import Contact from "./components/Contact";
@@ -57,23 +57,63 @@ function LandingPage({ onEnter }: { onEnter: () => void }) {
   return (
     <button
       type="button"
-      className="landing-screen portfolio-art portfolio-art-landing"
+      className="landing-screen"
       onClick={onEnter}
       aria-label="Enter Raunak Pandey's portfolio"
     >
-      <span className="landing-copy">
-        <span className="landing-greeting">Hi, I&apos;m</span>
-        <span className="landing-name">
-          <span className="landing-first-name">RAUNAK</span>
-          <span className="landing-last-name">PANDEY</span>
-        </span>
-      </span>
+      <picture className="landing-art">
+        <source
+          media="(max-width: 640px)"
+          srcSet="/landing-mobile-ver.jpeg"
+        />
+        <img
+          className="landing-art-image"
+          src="/landing-neon.jpeg"
+          alt="Illustration of Raunak Pandey surrounded by DevOps and cloud gaming artwork"
+        />
+      </picture>
       <img
         className="landing-signature"
         src="/signature.webp"
         alt="Raunak Pandey's signature"
       />
     </button>
+  );
+}
+
+function SiteFooter() {
+  return (
+    <footer className="border-t border-[var(--border-soft)] bg-[var(--ink-black)]">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
+        <div className="flex min-w-0 items-center gap-2.5">
+          <img
+            src="/R.png"
+            alt=""
+            className="h-8 w-8 shrink-0 rounded-md bg-white object-contain p-0.5"
+          />
+          <div className="min-w-0">
+            <p className="truncate text-sm font-semibold text-[var(--cloud-white)]">
+              {resumeData.name}
+            </p>
+            <p className="text-xs text-[var(--grey-blue)]">
+              © {new Date().getFullYear()}
+            </p>
+          </div>
+        </div>
+        <button
+          type="button"
+          onClick={() =>
+            document
+              .getElementById("app-content")
+              ?.scrollTo({ top: 0, behavior: "smooth" })
+          }
+          className="inline-flex shrink-0 items-center gap-2 rounded-full border border-[var(--border-soft)] px-3 py-2 text-sm font-medium text-[var(--cloud-white)] transition-colors hover:border-[var(--dusty-teal)] hover:text-[var(--dusty-teal)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--dusty-teal)]"
+        >
+          Back to top
+          <ArrowUp aria-hidden="true" className="h-4 w-4" />
+        </button>
+      </div>
+    </footer>
   );
 }
 
@@ -151,7 +191,7 @@ export default function App() {
                 : "about";
       document.getElementById(targetId)?.scrollIntoView();
     } else {
-      window.scrollTo(0, 0);
+      document.getElementById("app-content")?.scrollTo(0, 0);
     }
   }, [page]);
 
@@ -171,6 +211,7 @@ export default function App() {
       { id: "blogs", page: "blogs-extra" },
       { id: "contact", page: "contact" },
     ] as const;
+    const scrollContainer = document.getElementById("app-content");
     const observer = new IntersectionObserver(
       (entries) => {
         const visibleSections = entries
@@ -180,7 +221,11 @@ export default function App() {
         const activePage = sections.find(({ id }) => id === currentSection)?.page;
         if (activePage) setActiveSection(activePage);
       },
-      { rootMargin: "-20% 0px -65% 0px", threshold: [0, 0.1, 0.25, 0.5] },
+      {
+        root: scrollContainer,
+        rootMargin: "-20% 0px -65% 0px",
+        threshold: [0, 0.1, 0.25, 0.5],
+      },
     );
 
     sections.forEach(({ id }) => {
@@ -199,8 +244,9 @@ export default function App() {
     return (
       <div className="ink-indigo min-h-screen bg-[var(--ink-black)] text-[var(--cloud-white)]">
         <Navbar activePage="project" />
-        <main className="pt-16">
+        <main id="app-content" className="app-content">
           <Projects projectId={page.slice("project/".length)} />
+          <SiteFooter />
         </main>
         <Analytics />
       </div>
@@ -210,13 +256,14 @@ export default function App() {
   return (
     <div className="ink-indigo min-h-screen bg-[var(--ink-black)] text-[var(--cloud-white)] selection:bg-[var(--midnight-indigo)] selection:text-[var(--cloud-white)]">
       <Navbar activePage={activeSection} />
-      <main className="pt-16">
+      <main id="app-content" className="app-content">
         <About />
         <Education />
         <Skills />
         <Projects />
         <BlogsPage />
         <Contact />
+        <SiteFooter />
       </main>
       <Analytics />
     </div>

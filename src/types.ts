@@ -33,11 +33,6 @@ export interface LearningProgress {
   modules: LearningModule[];
 }
 
-export interface SkillGroup {
-  category: string;
-  skills: { name: string; proficiency: number }[];
-}
-
 export interface BlogPost {
   id: string;
   title: string;
@@ -50,8 +45,6 @@ export interface BlogPost {
 
 export interface ResumeData {
   name: string;
-  role: string;
-  location: string;
   phone: string;
   email: string;
   linkedin: string;
@@ -59,14 +52,8 @@ export interface ResumeData {
   dockerHub?: string;
   instagram?: string;
   education: EducationItem[];
-  skills: SkillGroup[];
   projects: ProjectItem[];
   learningProgress: LearningProgress;
-  problemSolvingDetails: {
-    description: string[];
-    leetcodeMockSolved: number;
-    skillsTouched: string[];
-  };
   certificationsList: string[];
   extraActivities: string[];
 }

@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { BookOpen, Calendar, ArrowRight, X, Sparkles, BookMarked, Code } from "lucide-react";
+import { Calendar, ArrowRight, X, BookMarked, Code } from "lucide-react";
 import { blogPosts } from "../data";
-import { BlogPost } from "../types";
+import type { BlogPost } from "../types";
 
 export default function Blogs() {
   const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
